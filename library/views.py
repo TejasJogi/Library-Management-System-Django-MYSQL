@@ -6,3 +6,6 @@ def index(request):
 
 def studentpage(request):
     return render(request, 'studentpage.html')
+
+def adminpage(request):
+    return render(request, 'adminpage.html')

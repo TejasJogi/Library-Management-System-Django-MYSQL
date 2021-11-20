@@ -5,4 +5,5 @@ from library import views
 urlpatterns = [
     path('',views.index, name='index'),
     path('studentpage', views.studentpage, name='studentpage'),
+    path('adminpage', views.adminpage, name='adminpage'),
 ]
