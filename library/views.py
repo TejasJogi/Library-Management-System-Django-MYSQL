@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from . import models
 
 # Create your views here.
 def index(request):
@@ -9,3 +10,7 @@ def studentpage(request):
 
 def adminpage(request):
     return render(request, 'adminpage.html')
+
+def studentview(request):
+    books=models.Book.objects.all()
+    return render(request,'studentview.html')
