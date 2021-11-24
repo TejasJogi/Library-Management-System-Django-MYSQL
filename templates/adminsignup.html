@@ -10,12 +10,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .signup-form {
+
+            margin-top: 2px;
+            padding: 30px;
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            font-size: 16px;
+            font-weight: bold;
+
+            border: none;
+            margin-top: 20px;
+            min-width: 140px;
+        }
+    </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="">Library Management System</a>
+            <a class="navbar-brand" href="/">Library Management System</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -23,50 +42,39 @@
             </button>
 
             <li class="d-flex">
-                <a class="nav-link active" href="/">Home</a>
+                <a class="nav-link active" href="">Home</a>
                 <a class="nav-link" href="adminpage">Admin</a>
                 <a class="nav-link" href="studentpage">Student</a>
             </li>
         </div>
     </nav>
 
-    <h3 class="p-3 mb-2 bg-dark text-white" style='font-size: 30px;text-align:center;'>Available Book in
-        Library</h3>
-    {% if books%}
-    <div class="container">
-        <table class="table table-hover table-condensed table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>Book Name</th>
-                    <th>ISBN</th>
-                    <th>Author</th>
-                    <th>Genere</th>
-                </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                    <td colspan="4" rowspan="4">
-                        <div class="links"></div>
-                    </td>
-                </tr>
-            </tfoot>
-            <tbody>
-                {% for book in books %}
-                <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td>{{book.name}}</td>
-                    <td>{{book.isbn}}</td>
-                    <td>{{book.author}}</td>
-                    <td>{{book.genere}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div class="signup-form">
+        <form method="post" class="form-horizontal">
+
+            <center>
+                <h2>Admin Signup</h2>
+            </center>
+
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group text-center">
+                <label class="control-label col-xs-4">{{ field.label_tag }}</label>
+                <div class="col-xs-8">
+                    {{ field }}
+
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="form-group text-center">
+                <div class="col-xs-8 col-xs-offset-4">
+                    <button type="submit" class="btn btn-success btn-lg" style="border-radius:0px;">Sign Up</button>
+                </div>
+            </div>
+        </form>
+        <div class="text-center">Already have an account? <a href="">Login here</a></div>
     </div>
-    {%else%}
-    <h1 style='text-align:center;'>Have 0 book</h1>
-    {%endif%}
 </body>
 
 </html>
