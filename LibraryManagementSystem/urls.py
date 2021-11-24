@@ -24,4 +24,5 @@ urlpatterns = [
     path('adminpage', include('library.urls')),
     path('studentview', include('library.urls')),
     path('adminsignup', include('library.urls')),
+    path('adminlogin', include('library.urls')),
 ]

@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from . import models
+from django.shortcuts import render, HttpResponseRedirect
+from . import models, forms
+from django.contrib.auth.models import Group
 
 # Create your views here.
 def index(request):
@@ -14,3 +15,19 @@ def adminpage(request):
 def studentview(request):
     books=models.Book.objects.all()
     return render(request,'studentview.html')
+
+
+def adminsignup(request):
+    form = forms.AdminSigup()
+    if request.method == 'POST':
+        form = forms.AdminSigup(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.set_password(user.password)
+            user.save()
+
+            my_admin_group = Group.objects.get_or_create(name='ADMIN')
+            my_admin_group[0].user_set.add(user)
+
+            return HttpResponseRedirect('adminlogin')
+    return render(request, 'adminsignup.html', {'form': form})
