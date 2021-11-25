@@ -19,6 +19,7 @@ from django.urls.conf import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/profile', include('django.contrib.auth.urls')),
     path('', include('library.urls')),
     path('studentpage', include('library.urls')),
     path('adminpage', include('library.urls')),
