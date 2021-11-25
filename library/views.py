@@ -31,3 +31,7 @@ def adminsignup(request):
 
             return HttpResponseRedirect('adminlogin')
     return render(request, 'adminsignup.html', {'form': form})
+
+
+def adminlogin(request):
+    return render(request, 'adminlogin.html')
