@@ -68,6 +68,7 @@ TEMPLATES = [
         },
     },
 ]
+LOGIN_REDIRECT_URL = '/admindash'
 
 WSGI_APPLICATION = 'LibraryManagementSystem.wsgi.application'
 
