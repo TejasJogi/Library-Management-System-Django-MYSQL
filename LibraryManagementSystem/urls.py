@@ -19,11 +19,11 @@ from django.urls.conf import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/profile', include('django.contrib.auth.urls')),
     path('', include('library.urls')),
     path('studentpage', include('library.urls')),
     path('adminpage', include('library.urls')),
     path('studentview', include('library.urls')),
     path('adminsignup', include('library.urls')),
     path('adminlogin', include('library.urls')),
+    path('admindash', include('library.urls')),
 ]

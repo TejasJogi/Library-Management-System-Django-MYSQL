@@ -10,5 +10,6 @@ urlpatterns = [
     path('studentview', views.studentview, name='studentview'),
     path('adminsignup', views.adminsignup, name='adminsignup'),
     path('adminlogin', LoginView.as_view(template_name='adminlogin.html')),
+    path('admindash', views.admindash, name='admindash'),
     
 ]

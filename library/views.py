@@ -35,3 +35,11 @@ def adminsignup(request):
 
 def adminlogin(request):
     return render(request, 'adminlogin.html')
+
+
+def adminauth(user):
+    return user.groups.filter(name='ADMIN').exists()
+
+
+def admindash(request):
+    return render(request, 'admindash.html')
