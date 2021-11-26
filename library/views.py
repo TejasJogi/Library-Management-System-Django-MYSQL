@@ -43,3 +43,13 @@ def adminauth(user):
 
 def admindash(request):
     return render(request, 'admindash.html')
+
+
+def addbook(request):
+    form = forms.BookForm()
+    if request.method == 'POST':
+        form = forms.BookForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return render(request, 'bookadded.html')
+    return render(request, 'addbook.html', {'form': form})
