@@ -19,7 +19,7 @@ class Book(models.Model):
     name = models.CharField(max_length=30)
     isbn = models.PositiveIntegerField()
     author = models.CharField(max_length=40)
-    Genere = models.CharField(max_length=30, choices=catchoice, default='education')
+    genere = models.CharField(max_length=30, choices=catchoice, default='education')
 
     def __str__(self):
         return str(self.name)+"["+str(self.isbn)+']'
