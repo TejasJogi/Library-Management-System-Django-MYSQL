@@ -13,8 +13,8 @@ def adminpage(request):
     return render(request, 'adminpage.html')
 
 def studentview(request):
-    books=models.Book.objects.all()
-    return render(request,'studentview.html')
+    books = models.Book.objects.all()
+    return render(request,'studentview.html',{'books': books})
 
 
 def adminsignup(request):
@@ -53,3 +53,9 @@ def addbook(request):
             user = form.save()
             return render(request, 'bookadded.html')
     return render(request, 'addbook.html', {'form': form})
+
+
+def viewbook(request):
+    books = models.Book.objects.all()
+    return render(request, 'viewbook.html', {'books': books})
+

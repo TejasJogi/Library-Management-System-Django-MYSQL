@@ -30,7 +30,7 @@
         </div>
     </nav>
 
-    <h3 class="p-3 mb-2 bg-dark text-white" style='font-size: 30px;text-align:center;'>Available Book in
+    <h3 class="p-3 mb-2 bg-dark bg-success text-white" style='font-size: 30px;text-align:center;'>Available Book in
         Library</h3>
     {% if books%}
     <div class="container">
@@ -44,13 +44,6 @@
                     <th>Genere</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <td colspan="4" rowspan="4">
-                        <div class="links"></div>
-                    </td>
-                </tr>
-            </tfoot>
             <tbody>
                 {% for book in books %}
                 <tr>
@@ -65,7 +58,7 @@
         </table>
     </div>
     {%else%}
-    <h1 style='text-align:center;'>Have 0 book</h1>
+    <h1>Have 0 book</h1>
     {%endif%}
 </body>
 
