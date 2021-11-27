@@ -28,4 +28,5 @@ urlpatterns = [
     path('admindash', include('library.urls')),
     path('addbook', include('library.urls')),
     path('viewbook', include('library.urls')),
+    path('bookedit/<int:pk>', include('library.urls')),
 ]

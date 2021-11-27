@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, redirect
 from . import models, forms
 from django.contrib.auth.models import Group
 
@@ -59,3 +59,17 @@ def viewbook(request):
     books = models.Book.objects.all()
     return render(request, 'viewbook.html', {'books': books})
 
+
+def bookedit(request, pk):
+    if not request.user.is_superuser:
+        return redirect('index')
+    obj = models.Book.objects.get(id=pk)
+    form = forms.BookForm(instance=obj)
+    if request.method == 'POST':
+        form = forms.BookForm(
+            data=request.POST, files=request.FILES, instance=obj)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.save()
+            return redirect(index)
+    return render(request, 'addbook.html', locals())

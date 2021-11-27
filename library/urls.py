@@ -13,5 +13,5 @@ urlpatterns = [
     path('admindash', views.admindash, name='admindash'),
     path('addbook', views.addbook, name='addbook'),
     path('viewbook', views.viewbook, name='viewbook'),
-    
+    path('bookedit/<int:pk>', views.bookedit, name='bookedit'),
 ]
