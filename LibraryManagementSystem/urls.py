@@ -27,4 +27,5 @@ urlpatterns = [
     path('adminlogin', include('library.urls')),
     path('admindash', include('library.urls')),
     path('addbook', include('library.urls')),
+    path('viewbook', include('library.urls')),
 ]

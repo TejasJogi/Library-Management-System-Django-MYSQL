@@ -12,5 +12,6 @@ urlpatterns = [
     path('adminlogin', LoginView.as_view(template_name='adminlogin.html')),
     path('admindash', views.admindash, name='admindash'),
     path('addbook', views.addbook, name='addbook'),
+    path('viewbook', views.viewbook, name='viewbook'),
     
 ]
