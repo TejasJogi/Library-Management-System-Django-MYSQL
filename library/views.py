@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect, redirect
+from django.shortcuts import render, HttpResponseRedirect, redirect, get_object_or_404
 from . import models, forms
 from django.contrib.auth.models import Group
 
@@ -73,3 +73,12 @@ def bookedit(request, pk):
             obj.save()
             return redirect(index)
     return render(request, 'addbook.html', locals())
+
+
+def bookdelete(request, pk):
+    if not request.user.is_superuser:
+        return redirect('index')
+    obj = get_object_or_404(models.Book, id=pk)
+    obj.delete()
+    #return redirect('index')
+    return render(request, 'viewbook.html')

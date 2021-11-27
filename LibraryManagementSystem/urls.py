@@ -29,4 +29,5 @@ urlpatterns = [
     path('addbook', include('library.urls')),
     path('viewbook', include('library.urls')),
     path('bookedit/<int:pk>', include('library.urls')),
+    path('bookdelete/<int:pk>', include('library.urls')),
 ]

@@ -53,9 +53,9 @@
                     <td>{{book.author}}</td>
                     <td>{{book.genere}}</td>
                     <td>
-                        <a href="bookedit/{{book.id}}"><span class="glyphicon glyphicon-pencil"
+                        <a href="bookedit/{{forloop.counter}}"><span class="glyphicon glyphicon-pencil"
                                 role="button">Edit</span></a>
-                        <a href="">Delete</a>
+                        <a href="bookdelete/{{forloop.counter}}">Delete</a>
                     </td>
                 </tr>
                 {% endfor %}
