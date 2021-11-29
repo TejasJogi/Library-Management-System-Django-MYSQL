@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from library import views
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('',views.index, name='index'),
@@ -15,4 +15,5 @@ urlpatterns = [
     path('viewbook', views.viewbook, name='viewbook'),
     path('bookedit/<int:pk>', views.bookedit, name='bookedit'),
     path('bookdelete/<int:pk>', views.bookdelete, name='bookdelete'),
+    path('logout', LogoutView.as_view(template_name='login.html')),
 ]

@@ -14,7 +14,7 @@ class Book(models.Model):
         ('fantasy', 'Fantasy'),
         ('thriller', 'Thriller'),
         ('romance', 'Romance'),
-        ('scifi', 'Sci-Fi')
+        ('scifi', 'Sci-Fi'),
     ]
     name = models.CharField(max_length=30)
     isbn = models.PositiveIntegerField()

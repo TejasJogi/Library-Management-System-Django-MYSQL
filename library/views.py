@@ -71,7 +71,7 @@ def bookedit(request, pk):
         if form.is_valid():
             obj = form.save(commit=False)
             obj.save()
-            return redirect(index)
+            return redirect('index')
     return render(request, 'addbook.html', locals())
 
 
