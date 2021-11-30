@@ -75,6 +75,8 @@ def bookedit(request, pk):
     return render(request, 'addbook.html', locals())
 
 
+
+
 def bookdelete(request, pk):
     if not request.user.is_superuser:
         return redirect('index')
