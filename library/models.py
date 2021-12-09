@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import BaseUserManager
 
 # Create your models here.
 
@@ -25,8 +26,7 @@ class Book(models.Model):
         return str(self.name)+"["+str(self.isbn)+']'
 
 
-
-class CustomAccountManager():
+class CustomAccountManager(BaseUserManager):
 
     def create_superuser(self, email, user_name, password, **other_fields):
 
