@@ -1,5 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager
+from django.contrib.auth.models import PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser
+from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 # Create your models here.
 
@@ -53,3 +57,20 @@ class CustomAccountManager(BaseUserManager):
         user.set_password(password)
         user.save()
         return user
+
+
+class NewUser(AbstractBaseUser, PermissionsMixin):
+    
+    user_name = models.CharField(max_length=150)
+    email = models.EmailField(_('email address'), unique=True)
+    start_date = models.DateTimeField(default=timezone.now)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
+
+    objects = CustomAccountManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['user_name']
+
+    def __str__(self):
+        return self.user_name
