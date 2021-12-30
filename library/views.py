@@ -3,7 +3,7 @@ from . import models, forms
 from django.contrib.auth.models import Group
 
 # Create your views here.
-def index(request):
+def index(request):   
     return render(request, 'index.html')
 
 def studentpage(request):
