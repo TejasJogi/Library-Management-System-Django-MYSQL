@@ -82,5 +82,5 @@ def bookdelete(request, pk):
         return redirect('index')
     obj = get_object_or_404(models.Book, id=pk)
     obj.delete()
-    return redirect('index')
-    # return render(request, 'viewbook.html')
+    # return redirect('index')
+    return redirect('admindash.html')
