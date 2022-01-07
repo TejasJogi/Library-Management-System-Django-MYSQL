@@ -10,7 +10,7 @@ class AdminSigup(forms.ModelForm):
     email = forms.EmailField(help_text='Email')
 
     class Meta:
-        model = User
+        model = models.NewUser
         fields = ['user_name', 'email', 'password']
 
 class BookForm(forms.ModelForm):
