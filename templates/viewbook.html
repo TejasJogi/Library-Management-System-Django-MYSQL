@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/55d3d9b8fc.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -39,9 +40,8 @@
                     <td>{{book.author}}</td>
                     <td>{{book.genere}}</td>
                     <td>
-                        <a href="bookedit/{{forloop.counter}}"><span class="glyphicon glyphicon-pencil"
-                                role="button">Edit</span></a>
-                        <a href="bookdelete/{{forloop.counter}}">Delete</a>
+                        <a href="bookedit/{{book.id}}"><i class="far fa-edit"  style="color: black; margin-left: 8px;"></i></a>
+                        <a href="bookdelete/{{book.id}}"><i class="far fa-trash-alt" style="color:black; margin-left: 8px;"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -49,7 +49,7 @@
         </table>
     </div>
     {%else%}
-    <h1>Have 0 book</h1>
+    <h1 style = 'text-align:center;'>Have 0 book</h1>
     {%endif%}
 
     {% include "footer.html" %}

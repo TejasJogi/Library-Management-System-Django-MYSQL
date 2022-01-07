@@ -24,8 +24,7 @@ class Admin:
 
                 my_admin_group = Group.objects.get_or_create(name='ADMIN')
                 my_admin_group[0].user_set.add(user)
-
-                return HttpResponseRedirect('adminlogin')
+            return HttpResponseRedirect('adminlogin')
         return render(request, 'adminsignup.html', {'form': form})
 
 
@@ -77,7 +76,8 @@ class Admin:
         obj = get_object_or_404(models.Book, id=pk)
         obj.delete()
         #return redirect('index')
-        return redirect('admindash.html')
+        #return render(request, 'index.html')
+        return HttpResponseRedirect('adminlogin')
 
 
 class Student:
