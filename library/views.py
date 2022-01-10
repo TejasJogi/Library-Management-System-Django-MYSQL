@@ -75,9 +75,7 @@ class Admin:
             return redirect('index')
         obj = get_object_or_404(models.Book, id=pk)
         obj.delete()
-        #return redirect('index')
-        #return render(request, 'index.html')
-        return HttpResponseRedirect('adminlogin')
+        return redirect('viewbook')
 
 
 class Student:
