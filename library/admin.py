@@ -1,9 +1,9 @@
 from django.contrib import admin
 from .models import Book, NewUser
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User
 
-admin.site.unregister(Group)
+#admin.site.register(Group)
 
 # Register your models here.
 
@@ -27,6 +27,4 @@ class UserAdminConfig(UserAdmin):
             'classes': ('wide'),
             'fields': ('user_name', 'email', 'password1', 'password2', 'is_active', 'is_staff')}),
     )
-
-
 admin.site.register(NewUser, UserAdminConfig)

@@ -21,7 +21,6 @@ class Admin:
                 user = form.save()
                 user.set_password(user.password)
                 user.save()
-
                 my_admin_group = Group.objects.get_or_create(name='ADMIN')
                 my_admin_group[0].user_set.add(user)
             return HttpResponseRedirect('adminlogin')

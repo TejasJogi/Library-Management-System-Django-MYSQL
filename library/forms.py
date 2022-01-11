@@ -8,7 +8,6 @@ User = get_user_model()
 class AdminSigup(forms.ModelForm):
     user_name = forms.CharField(max_length=20)
     email = forms.EmailField(help_text='Email')
-
     class Meta:
         model = models.NewUser
         fields = ['user_name', 'email', 'password']
