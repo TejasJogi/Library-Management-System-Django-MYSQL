@@ -17,6 +17,13 @@
 
     <title>Library Management System</title>
     <style type="text/css">
+        body {
+            overflow: hidden; /* Hide scrollbars */
+        }
+        .img1 {
+            height: 50%;
+        }
+
         .bs-example {
             margin: 0px;
 
@@ -28,16 +35,28 @@
 
         }
 
-        .col-lg-6 {
-            padding-left: 20%;
-            margin-top: 25px;
-            margin-bottom: 5px;
-            align-items: center;
-
+        .col-lg-1 {
+            display: inline-block;
+            text-align: center;
+            width: 50%;
+            margin-top: 50px;  
+        }
+        
+        .btn {
+            background-color: #353b40;
+            color: white;
+            padding: 10px 10px 10px 10px;
         }
 
+        .col-lg-2 {
+            display: inline-block;
+            text-align: center;
+            width: 50%;
+            margin-top: 50px;
+        }
         .jumbotron {
-            margin-bottom: 0px;
+            margin: 0px;
+            padding: 0;
             overflow: hidden;
         }
 
@@ -74,18 +93,16 @@
 
     <div class="jumbotron">
 
-        <div class="row">
+        <div class="draw">
 
-            <div class="col-lg-6">
-                <img src="static/admin.png" width="45%" alt=""><br><br>
-                <a class="btn btn-danger btn-lg" style="text-align:center; border-radius:0px;" href="adminpage"
+            <div class="col-lg-1">
+                <img class= "img1" src="static/admin.png" height="50%" alt=""><br><br>
+                <a class="btn" style="text-align:center; border-radius:0px;" href="adminpage"
                     role="button">Admin page</a>
 
-            </div>
-
-            <div class="col-lg-6">
-                <img src="static/student.png" width="45%" alt=""><br><br>
-                <a class="btn btn-danger btn-lg" style="border-radius:0px;" href="studentpage" role="button">Student
+            </div><div class="col-lg-2">
+                <img class="img2" src="static/student.png" height="50%" alt=""><br><br>
+                <a class="btn" style="border-radius:0px;" href="studentpage" role="button">Student
                     Page</a>
             </div>
         </div>
