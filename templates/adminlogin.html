@@ -15,29 +15,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="static/favi/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="static/favi/favicon-16x16.png">
     <link rel="manifest" href="static/favi/site.webmanifest">
-
-    <style type="text/css">
-        .signup-form {
-
-            margin-top: 2px;
-            padding: 30px;
-            width: 500px;
-            margin: 0 auto;
-        }
-
-        .btn {
-            font-size: 16px;
-            font-weight: bold;
-
-            border: none;
-            margin-top: 20px;
-            min-width: 140px;
-        }
-    </style>
 </head>
 
 <body>
-    
+
     {% include "navbar.html" %}
 
 
@@ -58,7 +39,7 @@
                 </div>
             </div>
             {% endfor %}
-
+            <br>
             <div class="form-group text-center">
                 <div class="col-xs-8 col-xs-offset-4">
                     <button type="submit" class="btn btn-success btn-lg" style="border-radius: 0%;">Login</button>
@@ -69,7 +50,7 @@
     </div>
 
     {% include "footer.html" %}
-    
+
 </body>
 
 </html>

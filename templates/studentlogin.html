@@ -10,33 +10,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
-    <style type="text/css">
-        .signup-form {
-
-            margin-top: 2px;
-            padding: 30px;
-            width: 500px;
-            margin: 0 auto;
-        }
-
-        .btn {
-            font-size: 16px;
-            font-weight: bold;
-
-            border: none;
-            margin-top: 20px;
-            min-width: 140px;
-        }
-    </style>
 </head>
 
 <body>
+
     {% include "navbar.html" %}
+
     <div class="signup-form">
         <form method="post" class="form-horizontal">
-
+            <br>
             <center>
                 <h2>Student Login</h2>
             </center>
@@ -51,7 +33,7 @@
                 </div>
             </div>
             {% endfor %}
-
+            <br>
             <div class="form-group text-center">
                 <div class="col-xs-8 col-xs-offset-4">
                     <button type="submit" class="btn btn-success btn-lg" style="border-radius: 0%;">Login</button>
@@ -61,9 +43,8 @@
         <div class="text-center">Do not have account? <a href="">Signup here</a></div>
     </div>
 
-
-
     {% include "footer.html" %}
+
 </body>
 
 </html>

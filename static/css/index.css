@@ -1,0 +1,56 @@
+/* body {
+            overflow: hidden; /* Hide scrollbars 
+        } */
+        .img1 {
+            height: 50%;
+        }
+
+        .bs-example {
+            margin: 0px;
+
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            font-family: sans-serif;
+
+        }
+
+        .col-lg-1 {
+            display: inline-block;
+            text-align: center;
+            width: 50%;
+            margin-top: 50px;
+        }
+
+        .col-lg-2 {
+            display: inline-block;
+            text-align: center;
+            width: 50%;
+            margin-top: 50px;
+        }
+
+        .btn {
+            background-color: #353b40;
+            color: white;
+            padding: 10px 10px 10px 10px;
+        }
+
+        .jumbotron {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .draw {
+            display: flex;
+            justify-content: space-between;
+            /* align-items: center; */
+        }
+
+        .carousel-caption {
+            color: white;
+            padding: 1.25rem;
+            font-size: 2vw;
+            text-shadow: 2px 2px black;
+        }
