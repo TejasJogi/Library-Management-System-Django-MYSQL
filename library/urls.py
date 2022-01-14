@@ -15,5 +15,6 @@ urlpatterns = [
     path('bookedit/<int:pk>', views.Admin.bookedit, name='bookedit'),
     path('bookdelete/<int:pk>', views.Admin.bookdelete, name='bookdelete'),
     path('logout', LogoutView.as_view(template_name='adminlogin.html'), name="logout"),
-    path('studentlogin', LoginView.as_view(template_name='studentlogin.html')),
+    path('studentlogin', LoginView.as_view(template_name='studentlogin.html'), name="login"),
+    path('studentsignup', views.Student.studentsignup, name='studentsignup'),
 ]

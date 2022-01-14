@@ -31,4 +31,6 @@ urlpatterns = [
     path('bookedit/<int:pk>', include('library.urls')),
     path('bookdelete/<int:pk>', include('library.urls')),
     path('logout', include('library.urls')),
+    path('studentlogin', include('library.urls')),
+    path('studentsignup', include('library.urls')),
 ]
