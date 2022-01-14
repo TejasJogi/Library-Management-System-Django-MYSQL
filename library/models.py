@@ -74,3 +74,19 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.user_name
+
+class Student(models.Model):
+    catchoice = [
+        ('a', 'A'),
+        ('b', 'B'),
+        ('c', 'C'),
+        ('d', 'D'),
+    ]
+    # user=models.OneToOneField(NewUser,on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=40)
+    last_name = models.CharField(max_length=40)
+    roll_no = models.PositiveIntegerField()
+    div = models.CharField(max_length=30, choices=catchoice)
+    branch = models.CharField(max_length=40)
+    def __str__(self):
+        return self.first_name+'_'+self.last_name+'['+str(self.roll_no)+'/'+self.div+']'
