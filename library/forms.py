@@ -6,8 +6,6 @@ from . import models
 User = get_user_model()
 
 class AdminSigup(forms.ModelForm):
-    user_name = forms.CharField(max_length=20)
-    email = forms.EmailField(help_text='Email')
     class Meta:
         model = models.NewUser
         fields = ['user_name', 'email', 'password']
@@ -16,3 +14,13 @@ class BookForm(forms.ModelForm):
     class Meta:
         model = models.Book
         fields=['name','isbn','author','genere']
+
+class StudentUserForm(forms.ModelForm):
+    class Meta:
+        model = models.NewUser
+        fields=['user_name','email','password']
+
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model=models.Student
+        fields=['first_name','last_name','roll_no','div','branch']
