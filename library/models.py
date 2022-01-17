@@ -88,5 +88,11 @@ class Student(models.Model):
     roll_no = models.PositiveIntegerField()
     div = models.CharField(max_length=30, choices=catchoice)
     branch = models.CharField(max_length=40)
+    
+    objects = CustomAccountManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['user_name']
+
     def __str__(self):
         return self.first_name+'_'+self.last_name+'['+str(self.roll_no)+'/'+self.div+']'
