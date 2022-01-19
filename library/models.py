@@ -59,13 +59,13 @@ class CustomAccountManager(BaseUserManager):
         return user
 
 
-class NewUser(AbstractBaseUser, PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin):
     
     user_name = models.CharField(max_length=150)
     email = models.EmailField(_('email address'), unique=True)
     start_date = models.DateTimeField(default=timezone.now)
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False)
+    is_student = models.BooleanField(default=False)
 
     objects = CustomAccountManager()
 
@@ -82,7 +82,7 @@ class Student(models.Model):
         ('c', 'C'),
         ('d', 'D'),
     ]
-    # user=models.OneToOneField(NewUser,on_delete=models.CASCADE)
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
     first_name = models.CharField(max_length=40)
     last_name = models.CharField(max_length=40)
     roll_no = models.PositiveIntegerField()

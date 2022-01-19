@@ -7,7 +7,7 @@ User = get_user_model()
 
 class AdminSigup(forms.ModelForm):
     class Meta:
-        model = models.NewUser
+        model = models.User
         fields = ['user_name', 'email', 'password']
 
 class BookForm(forms.ModelForm):
@@ -17,7 +17,7 @@ class BookForm(forms.ModelForm):
 
 class StudentUserForm(forms.ModelForm):
     class Meta:
-        model = models.NewUser
+        model = models.User
         fields=['user_name','email','password']
 
 class StudentForm(forms.ModelForm):

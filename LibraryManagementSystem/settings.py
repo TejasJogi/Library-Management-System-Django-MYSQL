@@ -136,4 +136,4 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-AUTH_USER_MODEL = 'library.NewUser'
+AUTH_USER_MODEL = 'library.User'
