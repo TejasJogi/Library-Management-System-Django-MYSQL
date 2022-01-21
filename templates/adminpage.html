@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 
-{% block style %}<link rel="stylesheet" href="static/css/userpage.css">{% endblock style %}
+{% block link %}<link rel="stylesheet" href="static/css/userpage.css">{% endblock link %}
 
 {% block title %}Admin{% endblock title %}
 
 {% block body %}
+
+{% include 'navbar.html' %}
+
 <div class="jumbotron">
     <h1 class="display-4">Welcome, Admin!</h1>
     <p class="lead">Welcome to Library Management System.</p>
