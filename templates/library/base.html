@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ 
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favi/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favi/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favi/favicon-16x16.png">
+    <link rel="manifest" href="static/favi/site.webmanifest">
+
+    <title> {% block title %}{% endblock title %} | Library Management System </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/css/navbar.css"> <!-- CSS for navbar -->
+    <link rel="stylesheet" href="static/css/footer.css"> <!-- CSS for footer -->
+    {% block link %}{% endblock link %}
+</head>
+
+<body>
+    <header>
+        
+    </header>
+
+    <main>
+        {% block body %}{% endblock body %}
+    </main>
+
+    <footer class="page-footer font-small dark">
+        <div class="footer-copyright text-center py-3">© 2021 TJ:
+            <a href="https://tjlibrary.com/"> TJLibrary.com</a>
+        </div>
+    </footer>
+</body>
+
+</html>
