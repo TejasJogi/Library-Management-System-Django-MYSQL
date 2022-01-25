@@ -17,15 +17,20 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 
+admin.site.site_header = "Library Management System Admin"
+admin.site.site_title = "Library Management System Admin Portal"
+admin.site.index_title = "Welcome to Library Management System Admin Portal"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/',include('django.contrib.auth.urls') ),
     path('', include('library.urls')),
     path('studentpage', include('library.urls')),
     path('adminpage', include('library.urls')),
     path('studentview', include('library.urls')),
     path('adminsignup', include('library.urls')),
     path('adminlogin', include('library.urls')),
-    path('admindash', include('library.urls')),
+    path('dashboard', include('library.urls')),
     path('addbook', include('library.urls')),
     path('viewbook', include('library.urls')),
     path('bookedit/<int:pk>', include('library.urls')),

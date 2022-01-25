@@ -68,7 +68,7 @@ TEMPLATES = [
         },
     },
 ]
-LOGIN_REDIRECT_URL = '/admindash'
+LOGIN_REDIRECT_URL =  '/dashboard'
 
 WSGI_APPLICATION = 'LibraryManagementSystem.wsgi.application'
 
@@ -137,3 +137,7 @@ STATICFILES_DIRS = [
 ]
 
 AUTH_USER_MODEL = 'library.User'
+
+AUTHENTICATION_BACKENDS = (
+    ('django.contrib.auth.backends.ModelBackend'),
+)

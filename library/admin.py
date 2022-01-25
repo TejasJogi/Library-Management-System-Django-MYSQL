@@ -3,47 +3,56 @@ from .models import Book, User, Student
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 
-admin.site.unregister(Group)
+# admin.site.unregister(Group)
 
 # Register your models here.
 
 class BookAdmin(admin.ModelAdmin):
-    pass
+    model = Book
+    search_fields = ('name','isbn', 'author', 'genere')
+    list_filter = ('name','isbn', 'author', 'genere')
+    ordering = ('isbn',)
+    list_display = ('name','isbn', 'author', 'genere')
+    fieldsets = (
+        (None, {'fields': ('name','isbn', 'author', 'genere')}),
+    )
+    add_fieldsets = (
+        (None, {'fields': ('name','isbn', 'author', 'genere')}),
+    )
 admin.site.register(Book, BookAdmin)
 
 
 class UserAdminConfig(UserAdmin):
     model = User
-    search_fields = ('user_name', 'email')
-    list_filter = ('user_name', 'email',  'is_admin', 'is_student')
+    search_fields = ('firstname','lastname', 'email')
+    list_filter = ('firstname','lastname', 'email',  'is_active', 'is_staff')
     ordering = ('email',)
-    list_display = ('user_name', 'email', 'is_admin', 'is_student')
+    list_display = ('firstname','lastname', 'email', 'is_active', 'is_staff')
     fieldsets = (
-        (None, {'fields': ('user_name', 'email')}),
-        ('Permissions', {'fields': ('is_admin', 'is_active')}),
+        (None, {'fields': ('firstname','lastname', 'email')}),
+        ('Permissions', {'fields': ('is_staff', 'is_active')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide'),
-            'fields': ('user_name', 'email', 'password1', 'password2', 'is_admin', 'is_student')}),
+            'fields': ('firstname','lastname', 'email', 'password1', 'password2', 'is_active', 'is_staff')}),
     )
-admin.site.register(User, UserAdminConfig)
+admin.site.register(User, UserAdminConfig) 
 
 
 class StudentAdminConfig(admin.ModelAdmin):
-    # model = Student
-    # search_fields = ('first_name','last_name', 'div','branch')
-    # list_filter = ('first_name','last_name', 'div','branch')
-    # ordering = ('div',)
-    # list_display = ('first_name','last_name','roll_no', 'div', 'branch')
-    # fieldsets = (
-    #     (None, {'fields': ('first_name','last_name','email', 'roll_no', 'div', 'branch')}),
+    model = Student
+    search_fields = ('firstname','lastname', 'div','branch')
+    list_filter = ( 'roll_no', 'div','branch')
+    ordering = ('div',)
+    list_display = ('roll_no', 'div','branch')
+    fieldsets = (
+        (None, {'fields': ('roll_no', 'div', 'branch')}),
         
-    # )
-    # add_fieldsets = (
-    #     (None, {
-    #         'classes': ('wide'),
-    #         'fields': ('first_name','last_name','email', 'roll_no', 'div', 'branch')}),
-    # )
-    pass
+    )
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide'),
+            'fields': ( 'roll_no', 'div', 'branch')}),
+    )
 admin.site.register(Student, StudentAdminConfig)

@@ -5,12 +5,29 @@ from django.contrib.auth.models import Group
 # Create your views here.
 
 def index(request):   
-    return render(request, 'index.html')
+    return render(request, 'library/index.html')
+
+
+def adminauth(user):
+    return user.groups.filter(name='ADMIN').exists()
+
+
+def studentauth(user):
+    return user.groups.filter(name='STUDENT').exists()
+
+
+def dashboard(request):
+    if adminauth(request.user):
+        return render(request, 'library/admindash.html')
+    else:
+        return render(request, 'library/studentdash.html')
+        
+
 
 class Admin:
 
     def adminpage(request):
-        return render(request, 'adminpage.html')
+        return render(request, 'library/adminpage.html')
     
 
     def adminsignup(request):
@@ -24,19 +41,11 @@ class Admin:
                 my_admin_group = Group.objects.get_or_create(name='ADMIN')
                 my_admin_group[0].user_set.add(user)
             return HttpResponseRedirect('adminlogin')
-        return render(request, 'adminsignup.html', {'form': form})
+        return render(request, 'library/adminsignup.html', {'form': form})
 
 
     def adminlogin(request):
-        return render(request, 'adminlogin.html')
-
-
-    def adminauth(user):
-        return user.groups.filter(name='ADMIN').exists()
-
-
-    def admindash(request):
-        return render(request, 'admindash.html')
+        return render(request, 'library/adminlogin.html')
 
 
     def addbook(request):
@@ -45,13 +54,13 @@ class Admin:
             form = forms.BookForm(request.POST)
             if form.is_valid():
                 user = form.save()
-                return render(request, 'bookadded.html')
-        return render(request, 'addbook.html', {'form': form})
+                return render(request, 'library/bookadded.html')
+        return render(request, 'library/addbook.html', {'form': form})
 
 
     def viewbook(request):
         books = models.Book.objects.all()
-        return render(request, 'viewbook.html', {'books': books})
+        return render(request, 'library/viewbook.html', {'books': books})
 
 
     def bookedit(request, pk):
@@ -66,7 +75,7 @@ class Admin:
                 obj = form.save(commit=False)
                 obj.save()
                 return redirect('index')
-        return render(request, 'addbook.html', locals())
+        return render(request, 'library/addbook.html', locals())
 
 
     def bookdelete(request, pk):
@@ -80,12 +89,12 @@ class Admin:
 class Student:
 
     def studentpage(request):
-        return render(request, 'studentpage.html')
+        return render(request, 'library/studentpage.html')
 
 
     def studentview(request):
         books = models.Book.objects.all()
-        return render(request,'studentview.html',{'books': books})
+        return render(request,'library/studentview.html',{'books': books})
 
     def studentsignup(request):
         form1=forms.StudentUserForm()
@@ -104,4 +113,7 @@ class Student:
                 my_student_group = Group.objects.get_or_create(name='STUDENT')
                 my_student_group[0].user_set.add(user)
             return HttpResponseRedirect('studentlogin')
-        return render(request,'studentsignup.html',context=mydict)
+        return render(request,'library/studentsignup.html',context=mydict)
+
+    def studentlogin(request):
+        return render(request, 'library/studentlogin.html')
