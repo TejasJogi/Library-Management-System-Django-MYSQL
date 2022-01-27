@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect, get_object_or_404
 from . import models, forms
 from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 # Create your views here.
 
@@ -12,21 +13,17 @@ def adminauth(user):
     return user.groups.filter(name='ADMIN').exists()
 
 
-def studentauth(user):
-    return user.groups.filter(name='STUDENT').exists()
-
-
 def dashboard(request):
     if adminauth(request.user):
         return render(request, 'library/admindash.html')
     else:
         return render(request, 'library/studentdash.html')
-        
-
 
 class Admin:
 
     def adminpage(request):
+        if request.user.is_authenticated:
+            return HttpResponseRedirect('afterlogin')
         return render(request, 'library/adminpage.html')
     
 
@@ -47,7 +44,8 @@ class Admin:
     def adminlogin(request):
         return render(request, 'library/adminlogin.html')
 
-
+    @login_required(login_url='adminlogin')
+    @user_passes_test(adminauth)
     def addbook(request):
         form = forms.BookForm()
         if request.method == 'POST':
@@ -57,12 +55,14 @@ class Admin:
                 return render(request, 'library/bookadded.html')
         return render(request, 'library/addbook.html', {'form': form})
 
-
+    @login_required(login_url='adminlogin')
+    @user_passes_test(adminauth)
     def viewbook(request):
         books = models.Book.objects.all()
         return render(request, 'library/viewbook.html', {'books': books})
 
-
+    @login_required(login_url='adminlogin')
+    @user_passes_test(adminauth)
     def bookedit(request, pk):
         if not request.user.is_superuser:
             return redirect('index')
@@ -77,7 +77,8 @@ class Admin:
                 return redirect('index')
         return render(request, 'library/addbook.html', locals())
 
-
+    @login_required(login_url='adminlogin')
+    @user_passes_test(adminauth)
     def bookdelete(request, pk):
         if not request.user.is_superuser:
             return redirect('index')
@@ -89,9 +90,11 @@ class Admin:
 class Student:
 
     def studentpage(request):
+        if request.user.is_authenticated:
+            return HttpResponseRedirect('afterlogin')
         return render(request, 'library/studentpage.html')
 
-
+    @login_required(login_url='studentlogin')
     def studentview(request):
         books = models.Book.objects.all()
         return render(request,'library/studentview.html',{'books': books})

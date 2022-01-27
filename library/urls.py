@@ -9,7 +9,7 @@ urlpatterns = [
     path('studentview', views.Student.studentview, name='studentview'),
     path('adminsignup', views.Admin.adminsignup, name='adminsignup'),
     path('adminlogin', LoginView.as_view(template_name='library/adminlogin.html'), name="login"),
-    path('dashboard', views.dashboard, name='admindash'),
+    path('dashboard', views.dashboard, name='dashboard'),
     path('addbook', views.Admin.addbook, name='addbook'),
     path('viewbook', views.Admin.viewbook, name='viewbook'),
     path('bookedit/<int:pk>', views.Admin.bookedit, name='bookedit'),
@@ -17,5 +17,4 @@ urlpatterns = [
     path('logout', LogoutView.as_view(template_name='library/index.html'), name="logout"),
     path('studentlogin', LoginView.as_view(template_name='library/studentlogin.html'), name="login"),
     path('studentsignup', views.Student.studentsignup, name='studentsignup'),
-    path('dashboard', views.dashboard, name='studentdash'),
 ]
