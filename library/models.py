@@ -87,6 +87,7 @@ class Student(models.Model):
     roll_no = models.PositiveIntegerField()
     div = models.CharField(max_length=30, choices=catchoice)
     branch = models.CharField(max_length=40)
+    is_active = models.BooleanField(default=True)
     
     objects = CustomAccountManager()
 

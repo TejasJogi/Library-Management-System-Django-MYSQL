@@ -13,17 +13,19 @@ def adminauth(user):
     return user.groups.filter(name='ADMIN').exists()
 
 
+def studentauth(user):
+        return user.groups.filter(name='STUDENT').exists()
+
+
 def dashboard(request):
     if adminauth(request.user):
         return render(request, 'library/admindash.html')
-    else:
+    if studentauth(request.user):
         return render(request, 'library/studentdash.html')
 
 class Admin:
 
     def adminpage(request):
-        if request.user.is_authenticated:
-            return HttpResponseRedirect('afterlogin')
         return render(request, 'library/adminpage.html')
     
 
@@ -90,11 +92,10 @@ class Admin:
 class Student:
 
     def studentpage(request):
-        if request.user.is_authenticated:
-            return HttpResponseRedirect('afterlogin')
         return render(request, 'library/studentpage.html')
 
     @login_required(login_url='studentlogin')
+    @user_passes_test(studentauth)
     def studentview(request):
         books = models.Book.objects.all()
         return render(request,'library/studentview.html',{'books': books})
