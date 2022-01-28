@@ -15,10 +15,10 @@ class BookForm(forms.ModelForm):
         model = models.Book
         fields=['name','isbn','author','genere']
 
-class AdminUserForm(forms.ModelForm):
-    class Meta:
-        model = models.User
-        fields=['firstname','lastname','email','password']
+# class AdminUserForm(forms.ModelForm):
+#     class Meta:
+#         model = models.User
+#         fields=['firstname','lastname','email','password']
 
 class StudentUserForm(forms.ModelForm):
     class Meta:

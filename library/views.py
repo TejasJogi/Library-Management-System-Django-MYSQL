@@ -30,9 +30,9 @@ class Admin:
     
 
     def adminsignup(request):
-        form = forms.AdminUserForm()
+        form = forms.UserForm()
         if request.method == 'POST':
-            form = forms.AdminUserForm(request.POST)
+            form = forms.UserForm(request.POST)
             if form.is_valid():
                 user = form.save()
                 user.set_password(user.password)
@@ -66,7 +66,7 @@ class Admin:
     @login_required(login_url='adminlogin')
     @user_passes_test(adminauth)
     def bookedit(request, pk):
-        if not request.user.is_superuser:
+        if not request.user.is_active:
             return redirect('index')
         obj = models.Book.objects.get(id=pk)
         form = forms.BookForm(instance=obj)
@@ -82,7 +82,7 @@ class Admin:
     @login_required(login_url='adminlogin')
     @user_passes_test(adminauth)
     def bookdelete(request, pk):
-        if not request.user.is_superuser:
+        if not request.user.is_active:
             return redirect('index')
         obj = get_object_or_404(models.Book, id=pk)
         obj.delete()

@@ -78,17 +78,17 @@ class User(AbstractBaseUser, PermissionsMixin):
         return str(self.fullname)
 
 
-class Admin(models.Model):
-    user=models.OneToOneField(User,on_delete=models.CASCADE)
+# class Admin(models.Model):
+#     user=models.OneToOneField(User,on_delete=models.CASCADE)
     
 
-    def __str__(self):
-        self.fullname = str(self.user.firstname)+'_'+str(self.user.lastname)
-        return str(self.fullname)
+#     def __str__(self):
+#         self.fullname = str(self.user.firstname)+'_'+str(self.user.lastname)
+#         return str(self.fullname)
 
-    @property
-    def getuserid(self):
-        return self.user.id
+#     @property
+#     def getuserid(self):
+#         return self.user.id
 
 
 class Student(models.Model):
