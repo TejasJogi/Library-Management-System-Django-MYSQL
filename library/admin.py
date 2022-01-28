@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Book, User, Student
+from .models import Book, Student, Admin, User
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 
@@ -25,12 +25,12 @@ admin.site.register(Book, BookAdmin)
 class UserAdminConfig(UserAdmin):
     model = User
     search_fields = ('firstname','lastname', 'email')
-    list_filter = ('firstname','lastname', 'email',  'is_active', 'is_staff')
+    list_filter = ('firstname','lastname', 'email',  'is_active')
     ordering = ('email',)
-    list_display = ('firstname','lastname', 'email', 'is_active', 'is_staff')
+    list_display = ('firstname','lastname', 'email', 'is_active')
     fieldsets = (
         (None, {'fields': ('firstname','lastname', 'email')}),
-        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+        ('Permissions', {'fields': ('is_active',)}),
     )
     add_fieldsets = (
         (None, {
@@ -40,6 +40,10 @@ class UserAdminConfig(UserAdmin):
 admin.site.register(User, UserAdminConfig) 
 
 
+class AdminConfig(admin.ModelAdmin):
+    pass
+admin.site.register(Admin, AdminConfig)
+
 class StudentAdminConfig(admin.ModelAdmin):
     model = Student
     search_fields = ('firstname','lastname', 'div','branch')
@@ -48,7 +52,7 @@ class StudentAdminConfig(admin.ModelAdmin):
     list_display = ('roll_no', 'div','branch')
     fieldsets = (
         (None, {'fields': ('roll_no', 'div', 'branch')}),
-        
+        ('Permissions', {'fields': ('is_staff', 'is_active')}),
     )
     add_fieldsets = (
         (None, {

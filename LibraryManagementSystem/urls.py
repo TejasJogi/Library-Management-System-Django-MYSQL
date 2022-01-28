@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 
-admin.site.site_header = "Library Management System Admin"
-admin.site.site_title = "Library Management System Admin Portal"
-admin.site.index_title = "Welcome to Library Management System Admin Portal"
+admin.site.site_header = "Library Management System"
+admin.site.site_title = "Library Management System Portal"
+admin.site.index_title = "Welcome to Library Management System Portal"
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -30,9 +30,9 @@ class Admin:
     
 
     def adminsignup(request):
-        form = forms.AdminSigup()
+        form = forms.AdminUserForm()
         if request.method == 'POST':
-            form = forms.AdminSigup(request.POST)
+            form = forms.AdminUserForm(request.POST)
             if form.is_valid():
                 user = form.save()
                 user.set_password(user.password)

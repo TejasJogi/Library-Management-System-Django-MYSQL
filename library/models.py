@@ -1,9 +1,10 @@
+from msilib.schema import Class
+from pickle import FALSE
 from django.db import models
 from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import AbstractBaseUser
 from django.utils.translation import gettext_lazy as _
-from datetime import datetime
 
 # Create your models here.
 
@@ -65,7 +66,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
     start_date = models.DateTimeField(auto_now_add=True)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     objects = CustomAccountManager()
 
@@ -75,6 +76,20 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         self.fullname = str(self.firstname)+'_'+str(self.lastname)
         return str(self.fullname)
+
+
+class Admin(models.Model):
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    
+
+    def __str__(self):
+        self.fullname = str(self.user.firstname)+'_'+str(self.user.lastname)
+        return str(self.fullname)
+
+    @property
+    def getuserid(self):
+        return self.user.id
+
 
 class Student(models.Model):
     catchoice = [
@@ -87,10 +102,7 @@ class Student(models.Model):
     roll_no = models.PositiveIntegerField()
     div = models.CharField(max_length=30, choices=catchoice)
     branch = models.CharField(max_length=40)
-    is_active = models.BooleanField(default=True)
     
-    objects = CustomAccountManager()
-
     def __str__(self):
         return str(self.user.firstname)+'['+str(self.roll_no)+'/'+self.div+']'
     
