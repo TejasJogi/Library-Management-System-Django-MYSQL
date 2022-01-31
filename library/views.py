@@ -88,11 +88,21 @@ class Admin:
         obj.delete()
         return redirect('viewbook')
 
+    @login_required(login_url='adminlogin')
+    @user_passes_test(adminauth)
+    def viewstudent(request):
+        students=models.Student.objects.all()
+        return render(request,'library/viewstudent.html',{'students':students})
+
 
 class Student:
 
     def studentpage(request):
         return render(request, 'library/studentpage.html')
+
+    def studentlogin(request):
+        return render(request, 'library/studentlogin.html')
+
 
     @login_required(login_url='studentlogin')
     @user_passes_test(studentauth)
@@ -119,5 +129,4 @@ class Student:
             return HttpResponseRedirect('studentlogin')
         return render(request,'library/studentsignup.html',context=mydict)
 
-    def studentlogin(request):
-        return render(request, 'library/studentlogin.html')
+        
