@@ -107,5 +107,9 @@ class Student(models.Model):
         return str(self.user.firstname)+'['+str(self.roll_no)+'/'+self.div+']'
     
     @property
+    def fullname(self):
+        return str(self.user.firstname)+' '+ str(self.user.lastname)
+
+    @property
     def getuserid(self):
         return self.user.id

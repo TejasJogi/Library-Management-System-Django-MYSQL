@@ -1,0 +1,48 @@
+{% extends 'library/base.html' %}
+
+{% block title %}View Student{% endblock title %}
+
+{% block body %}
+
+{% include 'library/adminnavbar.html' %}
+
+    <h3 class="p-3 mb-2 bg-dark bg-success text-white" style = 'font-size: 30px;text-align:center;'>Registered Students</h3>
+
+    <br>
+    {% if students%}
+<div class="container">
+  <table class="table table-hover table-condensed table-striped table-bordered">
+    <thead>
+    <tr>
+    <th>Name</th>
+    <th>Division</th>
+    <th>Roll No.</th>
+    <th>Branch</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+    <td colspan="4">
+    <div class="links"></div>
+    </td>
+    </tr>
+    </tfoot>
+    <tbody>
+      {% for s in students %}
+        <tr>
+          <td>{{s.fullname}}</td>
+          <td>{{s.div}}</td>
+          <td>{{s.roll_no}}</td>
+          <td>{{s.branch}}</td>
+    
+        </tr>
+    
+      {% endfor %}
+    </tbody>
+    </table>
+</div>
+{%else%}
+<h1> No Student Registered in Library</h1>
+{%endif%}
+
+{% endblock body %}
