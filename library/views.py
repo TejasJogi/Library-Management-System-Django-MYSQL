@@ -94,6 +94,20 @@ class Admin:
         students=models.Student.objects.all()
         return render(request,'library/viewstudent.html',{'students':students})
 
+    @login_required(login_url='adminlogin')
+    @user_passes_test(adminauth)
+    def bookissue(request):
+        form=forms.BookissueForm()
+        if request.method=='POST':
+            form=forms.BookissueForm(request.POST)
+            if form.is_valid():
+                obj=models.Bookissued()
+                obj.enrollment=request.POST.get('branch2')
+                obj.isbn=request.POST.get('isbn2')
+                obj.save()
+                return render(request,'library/bookissued.html')
+        return render(request,'library/bookissue.html',{'form':form})
+
 
 class Student:
 
