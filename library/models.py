@@ -1,10 +1,12 @@
 from msilib.schema import Class
 from pickle import FALSE
+from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import AbstractBaseUser
 from django.utils.translation import gettext_lazy as _
+from datetime import datetime,timedelta
 
 # Create your models here.
 
@@ -113,3 +115,15 @@ class Student(models.Model):
     @property
     def getuserid(self):
         return self.user.id
+
+
+def get_expiry():
+    return datetime.today() + timedelta(days=15)
+
+class Bookissued(models.Model):
+    branch=models.CharField(max_length=30)
+    isbn=models.CharField(max_length=30)
+    issuedate=models.DateField(auto_now=True)
+    expirydate=models.DateField(default=get_expiry)
+    def __str__(self):
+        return self.enrollment
