@@ -18,4 +18,5 @@ urlpatterns = [
     path('studentlogin', LoginView.as_view(template_name='library/studentlogin.html'), name="login"),
     path('studentsignup', views.Student.studentsignup, name='studentsignup'),
     path('viewstudent', views.Admin.viewstudent, name='viewstudent'),
+    path('bookissue', views.Admin.bookissue, name='bookissue'),
 ]
