@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect, redirect, get_object_
 from . import models, forms
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
+from datetime import date
 
 # Create your views here.
 
@@ -102,11 +103,37 @@ class Admin:
             form=forms.BookissueForm(request.POST)
             if form.is_valid():
                 obj=models.Bookissued()
-                obj.enrollment=request.POST.get('branch2')
+                obj.branch=request.POST.get('branch2')
                 obj.isbn=request.POST.get('isbn2')
                 obj.save()
                 return render(request,'library/bookissued.html')
         return render(request,'library/bookissue.html',{'form':form})
+
+    @login_required(login_url='adminlogin')
+    @user_passes_test(adminauth)
+    def issuedbook(request):
+        issuedbooks=models.Bookissued.objects.all()
+        li=[]
+        for ib in issuedbooks:
+            issdate=str(ib.issuedate.day)+'-'+str(ib.issuedate.month)+'-'+str(ib.issuedate.year)
+            expdate=str(ib.expirydate.day)+'-'+str(ib.expirydate.month)+'-'+str(ib.expirydate.year)
+
+            days=(date.today()-ib.issuedate)
+            print(date.today())
+            d=days.days
+            fine=0
+            if d>15:
+                day=d-15
+                fine=day*10
+            books=list(models.Book.objects.filter(isbn=ib.isbn))
+            students=list(models.Student.objects.filter(id=ib.id))
+            i=0
+            for l in books:
+                t=(students[i].fullname,students[i].rolldiv,books[i].name,books[i].author,issdate,expdate,fine)
+                print(t)
+                i=i+1
+                li.append(t)
+        return render(request,'library/issuedbook.html',{'li':li})
 
 
 class Student:

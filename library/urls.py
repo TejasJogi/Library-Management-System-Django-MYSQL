@@ -19,4 +19,5 @@ urlpatterns = [
     path('studentsignup', views.Student.studentsignup, name='studentsignup'),
     path('viewstudent', views.Admin.viewstudent, name='viewstudent'),
     path('bookissue', views.Admin.bookissue, name='bookissue'),
+    path('issuedbook', views.Admin.issuedbook, name='issuedbook'),
 ]

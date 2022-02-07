@@ -39,4 +39,6 @@ urlpatterns = [
     path('studentlogin', include('library.urls')),
     path('studentsignup', include('library.urls')),
     path('viewstudent', include('library.urls')),
+    path('bookissue', include('library.urls')),
+    path('issuedbook', include('library.urls')),
 ]

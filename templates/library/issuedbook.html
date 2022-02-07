@@ -1,0 +1,43 @@
+{% extends 'library/base.html' %}
+
+{% block title %}Issued Books{% endblock title %}
+
+{% block body %}
+
+{% include 'library/adminnavbar.html' %}
+<h3 class="p-3 mb-2 bg-dark text-white" style = 'font-size: 30px;text-align:center;margin-bottom:0px;'>Issued books</h3>
+<br>
+{% if li%}
+    <div class="container">
+      <table class="table table-hover table-condensed table-striped table-bordered">
+        <thead>
+        <tr>
+        <th>Student Name</th>
+        <th>Roll no./ Div</th>
+        <th>Book Name</th>
+        <th>Author</th>
+        <th>Issued</th>
+        <th>Expiry Date</th>
+        <th>Fine</th>
+        </tr>
+        </thead>
+        <tbody>
+          {% for t in li %}
+            <tr>
+              <td>{{t.0}}</td>
+              <td>{{t.1}}</td>
+              <td>{{t.2}}</td>
+              <td>{{t.3}}</td>
+              <td>{{t.4}}</td>
+              <td>{{t.5}}</td>
+              <td>{{t.6}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+        </table>
+    </div>
+    {%else%}
+    <h1> No book Issued</h1>
+    {%endif%}
+
+{% endblock body %}
