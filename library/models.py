@@ -88,9 +88,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 #         self.fullname = str(self.user.firstname)+'_'+str(self.user.lastname)
 #         return str(self.fullname)
 
-#     @property
-#     def getuserid(self):
-#         return self.user.id
+    # @property
+    # def getuserid(self):
+    #     return self.user.id
 
 
 class Student(models.Model):
@@ -106,24 +106,24 @@ class Student(models.Model):
     branch = models.CharField(max_length=40)
     
     def __str__(self):
-        return str(self.user.firstname)+'['+str(self.roll_no)+'/'+self.div+']'
+        return str(self.user.firstname)+'['+str(self.roll_no)+'/'+str(self.div)+']'
     
     @property
     def fullname(self):
         return str(self.user.firstname)+' '+ str(self.user.lastname)
 
     @property
-    def getuserid(self):
-        return self.user.id
+    def rolldiv(self):
+        return str(self.roll_no)+'/'+str(self.div)
 
 
 def get_expiry():
     return datetime.today() + timedelta(days=15)
 
 class Bookissued(models.Model):
-    branch=models.CharField(max_length=30)
+    branch = models.CharField(max_length=30, default='issued')
     isbn=models.CharField(max_length=30)
     issuedate=models.DateField(auto_now=True)
     expirydate=models.DateField(default=get_expiry)
     def __str__(self):
-        return self.enrollment
+        return self.branch
