@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, HttpResponseRedirect, redirect, get_object_or_404
 from . import models, forms
 from django.contrib.auth.models import Group
@@ -23,6 +24,8 @@ def dashboard(request):
         return render(request, 'library/admindash.html')
     if studentauth(request.user):
         return render(request, 'library/studentdash.html')
+    else:
+        return HttpResponse("<br><h1 style='text-align: center'>User Dosen't Exist</h1>")
 
 class Admin:
 
@@ -171,9 +174,9 @@ class Student:
         return render(request,'library/studentsignup.html',context=mydict)
 
     @login_required(login_url='studentlogin')
-    def viewissuedbookbystudent(request):
-        student=models.StudentExtra.objects.filter(user_id=request.user.id)
-        issuedbook=models.IssuedBook.objects.filter(enrollment=student[0].enrollment)
+    def studentissuedbook(request):
+        student=models.Student.objects.filter(user_id=request.user.id)
+        issuedbook=models.Bookissued.objects.filter(id=student[0].id)
 
         li1=[]
 
@@ -181,7 +184,8 @@ class Student:
         for ib in issuedbook:
             books=models.Book.objects.filter(isbn=ib.isbn)
             for book in books:
-                t=(request.user,student[0].enrollment,student[0].branch,book.name,book.author)
+                t=(request.user,student[0].rolldiv,student[0].branch,book.name,book.author)
+                print(t)
                 li1.append(t)
             issdate=str(ib.issuedate.day)+'-'+str(ib.issuedate.month)+'-'+str(ib.issuedate.year)
             expdate=str(ib.expirydate.day)+'-'+str(ib.expirydate.month)+'-'+str(ib.expirydate.year)
@@ -196,4 +200,4 @@ class Student:
             t=(issdate,expdate,fine)
             li2.append(t)
 
-        return render(request,'library/viewissuedbookbystudent.html',{'li1':li1,'li2':li2})
+        return render(request,'library/studentissuedbook.html',{'li1':li1,'li2':li2})
