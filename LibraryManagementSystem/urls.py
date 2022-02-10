@@ -23,7 +23,7 @@ admin.site.index_title = "Welcome to Library Management System Portal"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/',include('django.contrib.auth.urls')),
+    # path('accounts/',include('django.contrib.auth.urls')),
     path('', include('library.urls')),
     path('studentpage', include('library.urls')),
     path('adminpage', include('library.urls')),
@@ -41,4 +41,5 @@ urlpatterns = [
     path('viewstudent', include('library.urls')),
     path('bookissue', include('library.urls')),
     path('issuedbook', include('library.urls')),
+    path('studentissuedbook', include('library.urls')),
 ]

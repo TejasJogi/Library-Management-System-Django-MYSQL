@@ -20,4 +20,5 @@ urlpatterns = [
     path('viewstudent', views.Admin.viewstudent, name='viewstudent'),
     path('bookissue', views.Admin.bookissue, name='bookissue'),
     path('issuedbook', views.Admin.issuedbook, name='issuedbook'),
+    path('studentissuedbook', views.Student.studentissuedbook, name='studentissuedbook'),
 ]
