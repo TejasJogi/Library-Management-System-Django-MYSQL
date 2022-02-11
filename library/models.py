@@ -120,7 +120,7 @@ class Student(models.Model):
 def get_expiry():
     return datetime.today() + timedelta(days=15)
 
-class Bookissued(models.Model):
+class IssuedBook(models.Model):
     branch = models.CharField(max_length=30, default='issued')
     isbn=models.CharField(max_length=30)
     issuedate=models.DateField(auto_now=True)
