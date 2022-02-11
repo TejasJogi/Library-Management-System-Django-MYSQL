@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Book, Student, User
+from .models import Book, IssuedBook, Student, User
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 
@@ -49,10 +49,10 @@ class StudentAdminConfig(admin.ModelAdmin):
     search_fields = ('firstname','lastname', 'div','branch')
     list_filter = ( 'roll_no', 'div','branch')
     ordering = ('div',)
-    list_display = ('roll_no', 'div','branch')
+    list_display = ('fullname', 'roll_no', 'div','branch')
     fieldsets = (
         (None, {'fields': ('roll_no', 'div', 'branch')}),
-        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+        # ('Permissions', {'fields': ('is_staff', 'is_active')}),
     )
     add_fieldsets = (
         (None, {
@@ -60,3 +60,7 @@ class StudentAdminConfig(admin.ModelAdmin):
             'fields': ( 'roll_no', 'div', 'branch')}),
     )
 admin.site.register(Student, StudentAdminConfig)
+
+class IsuedBookAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(IssuedBook, IsuedBookAdmin)
