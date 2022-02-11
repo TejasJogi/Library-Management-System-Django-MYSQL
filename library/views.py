@@ -105,7 +105,7 @@ class Admin:
         if request.method=='POST':
             form=forms.BookissueForm(request.POST)
             if form.is_valid():
-                obj=models.Bookissued()
+                obj=models.IssuedBook()
                 obj.branch=request.POST.get('branch2')
                 obj.isbn=request.POST.get('isbn2')
                 obj.save()
@@ -115,7 +115,7 @@ class Admin:
     @login_required(login_url='adminlogin')
     @user_passes_test(adminauth)
     def issuedbook(request):
-        issuedbooks=models.Bookissued.objects.all()
+        issuedbooks=models.IssuedBook.objects.all()
         li=[]
         for ib in issuedbooks:
             issdate=str(ib.issuedate.day)+'-'+str(ib.issuedate.month)+'-'+str(ib.issuedate.year)
@@ -176,7 +176,7 @@ class Student:
     @login_required(login_url='studentlogin')
     def studentissuedbook(request):
         student=models.Student.objects.filter(user_id=request.user.id)
-        issuedbook=models.Bookissued.objects.filter(id=student[0].id)
+        issuedbook=models.IssuedBook.objects.filter(id=student[0].id)
 
         li1=[]
 
