@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Navbar | Library Management System</title>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="">Library Management System</a>
+
+            <li class="d-flex">
+                <a class="nav-link active" href="/">Home</a>
+
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Book</a>
+                    <div class="dropdown-menu">
+                        <a href="studentview" style="color: black;"class="dropdown-item">View Book</a>
+                        <a href="studentissuedbook" style="color: black;"class="dropdown-item">View Isued Book</a>
+                    </div>
+                </div>
+
+                <a href="logout" class="nav-item nav-link">Logout</a> &nbsp
+            </li>
+        </div>
+    </nav>
+</body>
+
+</html>
