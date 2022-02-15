@@ -1,6 +1,11 @@
-/* body {
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
             overflow: hidden;
-        } */
+        }
         .img1 {
             height: 50%;
         }
@@ -34,7 +39,7 @@
             background-color: #353b40;
             color: white;
             padding: 10px 10px 10px 10px;
-            border-radius: 23px;
+            border-radius: 25px;
         }
 
         .jumbotron {

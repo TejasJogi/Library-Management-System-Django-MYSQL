@@ -4,38 +4,41 @@
 
 {% block body %}
 
-{% include 'library/adminnavbar.html' %}
+{% include 'library/studentnavbar.html' %}
 
-    <h3 class="p-3 mb-2 bg-dark bg-success text-white" style='font-size: 30px;text-align:center;'>Available Book in
-        Library</h3>
-    {% if books%}
-    <div class="container">
-        <table class="table table-hover table-condensed table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>Book Name</th>
-                    <th>ISBN</th>
-                    <th>Author</th>
-                    <th>Genere</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for book in books %}
-                <tr>
-                    <td>{{forloop.counter}}</td>
-                    <td>{{book.name}}</td>
-                    <td>{{book.isbn}}</td>
-                    <td>{{book.author}}</td>
-                    <td>{{book.genere}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {%else%}
-    <h1 style = 'text-align:center;'>Have 0 book</h1>
-    {%endif%}
+<h3 class="p-3 mb-2 bg-dark bg-success text-white" style='font-size: 30px;text-align:center;'>Available Book in
+    Library</h3>
 
-    
+<br>
+
+{% if books%}
+<div class="container">
+    <table class="table table-hover table-condensed table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Book Id</th>
+                <th>Book Name</th>
+                <th>ISBN</th>
+                <th>Author</th>
+                <th>Genere</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{book.name}}</td>
+                <td>{{book.isbn}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.genere}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{%else%}
+<h1 style='text-align:center;'>Have 0 book</h1>
+{%endif%}
+
+
 {% endblock body %}
