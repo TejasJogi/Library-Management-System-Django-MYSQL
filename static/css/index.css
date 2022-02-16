@@ -38,8 +38,9 @@ body {
         .btn {
             background-color: #353b40;
             color: white;
-            padding: 10px 10px 10px 10px;
-            border-radius: 25px;
+            padding: 15px 15px 15px 15px;
+            border-radius: 32px;
+        
         }
 
         .jumbotron {
