@@ -4,6 +4,14 @@
 
 {% block link %}<link rel="stylesheet" href="static/css/index.css">{% endblock link %}
 
+<style>
+    .lead {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+</style>
+
 {% block body %}
 
 {% include "library/adminnavbar.html" %}
@@ -15,15 +23,15 @@
     <hr class="my-4">
     <div class="options" style="text-align:center">
         <a href="addbook" class="btn" role="button"
-            aria-pressed="true" style="background-color: #353b40; color: white; padding: 15px 15px 15px 15px; border-radius: 32px;">Add Books</a><br><br>
+            aria-pressed="true" style="background-color: #353b40; color: white; padding: 10px 40px 10px 40px; border-radius: 21px;">Add Books</a><br><br>
         <a href="viewbook" class="btn" role="button"
-            aria-pressed="true" style="background-color: #353b40; color: white; padding: 15px 15px 15px 15px; border-radius: 32px;">View All Books</a><br><br>
+            aria-pressed="true" style="background-color: #353b40; color: white; padding: 10px 40px 10px 40px; border-radius: 21px;">View All Books</a><br><br>
         <a href="viewstudent" class="btn" role="button"
-            aria-pressed="true" style="background-color: #353b40; color: white; padding: 15px 15px 15px 15px; border-radius: 32px;">View Student</a><br><br>
+            aria-pressed="true" style="background-color: #353b40; color: white; padding: 10px 40px 10px 40px; border-radius: 21px;">View Student</a><br><br>
         <a href="bookissue" class="btn" role="button"
-            aria-pressed="true" style="background-color: #353b40; color: white; padding: 15px 15px 15px 15px; border-radius: 32px;">Issue New Book</a><br><br>
+            aria-pressed="true" style="background-color: #353b40; color: white; padding: 10px 40px 10px 40px; border-radius: 21px;">Issue New Book</a><br><br>
         <a href="issuedbook" class="btn" role="button" 
-            aria-pressed="true" style="background-color: #353b40; color: white; padding: 15px 15px 15px 15px; border-radius: 32px;">View Issued Book</a><br><br>
+            aria-pressed="true" style="background-color: #353b40; color: white; padding: 10px 40px 10px 40px; border-radius: 21px;">View Issued Book</a><br><br>
     </div>
 </div>
 
