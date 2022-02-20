@@ -185,7 +185,7 @@ class Student:
             books=models.Book.objects.filter(isbn=ib.isbn)
             for book in books:
                 t=(request.user,student[0].rolldiv,student[0].branch,book.name,book.author)
-                print(t)
+                
                 li1.append(t)
             issdate=str(ib.issuedate.day)+'-'+str(ib.issuedate.month)+'-'+str(ib.issuedate.year)
             expdate=str(ib.expirydate.day)+'-'+str(ib.expirydate.month)+'-'+str(ib.expirydate.year)
