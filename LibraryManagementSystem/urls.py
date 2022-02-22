@@ -42,4 +42,5 @@ urlpatterns = [
     path('bookissue', include('library.urls')),
     path('issuedbook', include('library.urls')),
     path('studentissuedbook', include('library.urls')),
+    path('changepassword', include('library.urls')),
 ]
