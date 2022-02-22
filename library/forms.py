@@ -37,6 +37,6 @@ class StudentForm(forms.ModelForm):
 
 class BookissueForm(forms.Form):
     isbn2 = forms.ModelChoiceField(queryset=models.Book.objects.all(
-    ), empty_label="Name and ISBN", to_field_name="isbn", label='Name and Isbn')
+    ), empty_label="Name and ISBN", to_field_name="isbn", label='Name and ISBN')
     branch2 = forms.ModelChoiceField(queryset=models.Student.objects.all(
-    ), empty_label="Name and Roll no.", to_field_name='roll_no', label='Name and Roll no.')
+    ), empty_label="Name and Roll no.", to_field_name='roll_no', label='Name and Roll No.')
