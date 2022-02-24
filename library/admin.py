@@ -52,7 +52,7 @@ class StudentAdminConfig(admin.ModelAdmin):
     list_display = ('fullname', 'roll_no', 'div','branch')
     fieldsets = (
         (None, {'fields': ('roll_no', 'div', 'branch')}),
-        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+        # ('Permissions', {'fields': ('is_staff', 'is_active')}),
     )
     add_fieldsets = (
         (None, {
