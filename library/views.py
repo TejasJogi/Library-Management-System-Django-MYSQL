@@ -4,6 +4,10 @@ from . import models, forms
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from datetime import date
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
+
 
 # Create your views here.
 
@@ -16,7 +20,7 @@ def adminauth(user):
 
 
 def studentauth(user):
-        return user.groups.filter(name='STUDENT').exists()
+    return user.groups.filter(name='STUDENT').exists()
 
 
 def dashboard(request):
@@ -26,6 +30,25 @@ def dashboard(request):
         return render(request, 'library/studentdash.html')
     else:
         return HttpResponse("<br><h1 style='text-align: center'>User Dosen't Exist</h1>")
+
+def changepassword(request):
+    # form = PasswordChangeForm()
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = PasswordChangeForm(request.user, request.POST)
+            if form.is_valid():
+                user = form.save()
+                update_session_auth_hash(request, form.user)
+                messages.success(request, 'Your password was successfully updated!')
+                return HttpResponseRedirect('dashboard')
+            else:
+                messages.error(request, 'Please correct the error below.')
+        else:            
+            form = PasswordChangeForm(user=request.user)
+        return render(request, 'library/changepassword.html', {'form' : form})
+    else:
+        return HttpResponseRedirect('changepassword')
+    
 
 class Admin:
 
@@ -185,7 +208,7 @@ class Student:
             books=models.Book.objects.filter(isbn=ib.isbn)
             for book in books:
                 t=(request.user,student[0].rolldiv,student[0].branch,book.name,book.author)
-                
+
                 li1.append(t)
             issdate=str(ib.issuedate.day)+'-'+str(ib.issuedate.month)+'-'+str(ib.issuedate.year)
             expdate=str(ib.expirydate.day)+'-'+str(ib.expirydate.month)+'-'+str(ib.expirydate.year)
