@@ -21,13 +21,6 @@ body {
 
         }
 
-        .col-lg-1 {
-            display: inline-block;
-            text-align: center;
-            width: 50%;
-            margin-top: 50px;
-        }
-
         .col-lg-2 {
             display: inline-block;
             text-align: center;
