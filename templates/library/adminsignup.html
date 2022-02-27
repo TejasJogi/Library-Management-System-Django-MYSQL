@@ -10,7 +10,7 @@
     <form method="post" class="form-horizontal">
         <br>
         <center>
-            <h2>Admin Signup</h2>
+            <h2 class="mt-3">Admin Signup</h2>
         </center>
         <br>
         {% csrf_token %}
@@ -19,7 +19,6 @@
             <label class="control-label col-xs-4">{{ field.label_tag }}</label>
             <div class="col-xs-8">
                 {{ field }}
-
             </div>
         </div>
         {% endfor %}

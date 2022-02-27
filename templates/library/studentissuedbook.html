@@ -2,14 +2,16 @@
 
 {% block title %}Issued Books to you{% endblock title %}
 
+{% block link %}<link rel="stylesheet" href="static/css/noscroll.css">{% endblock link %}
+
 {% block body %}
 
 {% include 'library/studentnavbar.html' %}
 
-<h3 class="p-3 mb-2 bg-dark text-white" style='font-size: 50px;text-align:center;'>Book Issued To You</h3>
+<h3 class="p-3 mb-2 bg-dark text-white" style="font-size: 50px;text-align:center;">Book Issued To You</h3>
 
 <br>
-<div class="row">
+<div class="row" style="display:flex; justify-content:center;">
 
     <div class="col-lg-6" style="padding-right:0px;">
         {% if li1%}
@@ -78,7 +80,8 @@
             </tbody>
         </table>
         {%else%}
-        <h1> No book Issued to you</h1>
+        <h1 class="text-center"> No book Issued to you</h1>
         {%endif%}
+    </div>
 
-        {% endblock body %}
+    {% endblock body %}
