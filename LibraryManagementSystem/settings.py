@@ -39,9 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # My App
     'library.apps.LibraryConfig',
 
-    'widget_tweaks'
+    # Form widget tweaks
+    'widget_tweaks',
+
+    # Django Social loin
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -141,6 +150,12 @@ STATICFILES_DIRS = [
 
 AUTH_USER_MODEL = 'library.User'
 
-AUTHENTICATION_BACKENDS = (
-    ('django.contrib.auth.backends.ModelBackend'),
-)
+AUTHENTICATION_BACKENDS = [
+
+    'django.contrib.auth.backends.ModelBackend',
+
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
+
+SITE_ID = 1
