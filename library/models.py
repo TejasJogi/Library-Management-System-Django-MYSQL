@@ -70,14 +70,19 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
-    objects = CustomAccountManager()
 
     USERNAME_FIELD = 'email'
+    EMAIL_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+    objects = CustomAccountManager()
 
     def __str__(self):
         self.fullname = str(self.firstname)+'_'+str(self.lastname)
         return str(self.fullname)
+
+    def get_email(self):
+        return self.email
 
 
 # class Admin(models.Model):
@@ -127,3 +132,14 @@ class IssuedBook(models.Model):
     expirydate=models.DateField(default=get_expiry)
     def __str__(self):
         return self.branch
+
+class user_type(models.Model):
+    is_admin = models.BooleanField(default=False)
+    is_student = models.BooleanField(default=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        if self.is_student == True:
+            return User.get_email(self.user) + " - is_student"
+        else:
+            return User.get_email(self.user) + " - is_admin"
