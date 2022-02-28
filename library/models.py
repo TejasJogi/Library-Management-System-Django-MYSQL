@@ -133,10 +133,11 @@ class IssuedBook(models.Model):
     def __str__(self):
         return self.branch
 
-class user_type(models.Model):
+class UserType(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     is_admin = models.BooleanField(default=False)
     is_student = models.BooleanField(default=False)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
 
     def __str__(self):
         if self.is_student == True:
