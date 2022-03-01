@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Book, IssuedBook, Student, User
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import Group
+from .models import User, UserType
 
 # admin.site.unregister(Group)
 
@@ -64,3 +64,5 @@ admin.site.register(Student, StudentAdminConfig)
 class IsuedBookAdmin(admin.ModelAdmin):
     pass
 admin.site.register(IssuedBook, IsuedBookAdmin)
+
+admin.site.register(UserType)
