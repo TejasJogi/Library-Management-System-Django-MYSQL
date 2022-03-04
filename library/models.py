@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from msilib.schema import Class
 from pickle import FALSE
 from unicodedata import name
@@ -62,7 +63,8 @@ class CustomAccountManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    
+
+    username =  models.CharField(max_length=50,default='username')  
     firstname = models.CharField(max_length=50)    
     lastname = models.CharField(max_length=50)    
     email = models.EmailField(_('email address'), unique=True)
