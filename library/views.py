@@ -29,7 +29,7 @@ def dashboard(request):
     if studentauth(request.user):
         return render(request, 'library/studentdash.html')
     else:
-        return HttpResponse("<br><h1 style='text-align: center'>User Dosen't Exist</h1>")
+        return HttpResponse("<br><h1 style='text-align: center'>You are not Verified!</h1><p style='text-align: center; font-size:25px'>Try after 24 hours.</p>")
 
 def changepassword(request):
     # form = PasswordChangeForm()
