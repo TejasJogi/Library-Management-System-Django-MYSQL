@@ -26,14 +26,13 @@
         <br>
         <div class="form-group text-center">
             <div class="col-xs-8 col-xs-offset-4">
-                <button type="submit" class="btn btn-lg" style="background-color: #353b40; color: white; padding: 10px 40px 10px 40px; border-radius: 21px;">Login</button>
+                <button type="submit" class="btn btn-lg"
+                    style="background-color: #353b40; color: white; padding: 10px 40px 10px 40px; border-radius: 21px;">Login</button>
             </div>
         </div>
-        <div class="social">
-            <button><a href="{% provider_login_url 'google' %}">Login With Google</a></button>
-        </div>
     </form>
-    <div class="text-center">Do not have account? <a href="adminsignup">Signup here</a></div>
+    <div class="text-center">Do not have account? <a href="adminsignup">Signup here</a></div><br>
+    <div class="text-center"><a href="reset_password">Forget password?</a></div>
 </div>
 
 {% endblock body %}
