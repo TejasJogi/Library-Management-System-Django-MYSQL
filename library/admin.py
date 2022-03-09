@@ -46,8 +46,9 @@ admin.site.register(User, UserAdminConfig)
 
 class StudentAdminConfig(admin.ModelAdmin):
     model = Student
-    search_fields = ('firstname','lastname', 'div','branch')
-    list_filter = ( 'roll_no', 'div','branch')
+
+    search_fields = ('div','branch')
+    list_filter = ('roll_no', 'div','branch')
     ordering = ('div',)
     list_display = ('fullname', 'roll_no', 'div','branch')
     fieldsets = (
