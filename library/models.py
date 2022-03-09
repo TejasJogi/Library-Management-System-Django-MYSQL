@@ -63,8 +63,7 @@ class CustomAccountManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-
-    username =  models.CharField(max_length=50,default='username')  
+  
     firstname = models.CharField(max_length=50)    
     lastname = models.CharField(max_length=50)    
     email = models.EmailField(_('email address'), unique=True)
@@ -95,9 +94,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 #         self.fullname = str(self.user.firstname)+'_'+str(self.user.lastname)
 #         return str(self.fullname)
 
-    # @property
-    # def getuserid(self):
-    #     return self.user.id
+#     @property
+#     def getuserid(self):
+#         return self.user.id
 
 
 class Student(models.Model):
