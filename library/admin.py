@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Book, IssuedBook, Student, User
 from django.contrib.auth.admin import UserAdmin
-from .models import User, UserType
+from .models import User
 
 # admin.site.unregister(Group)
 
@@ -24,13 +24,14 @@ admin.site.register(Book, BookAdmin)
 
 class UserAdminConfig(UserAdmin):
     model = User
-    search_fields = ('firstname','lastname', 'email')
-    list_filter = ('firstname','lastname', 'email', 'is_staff', 'is_active')
+    search_fields = ('email',)
+    list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
     ordering = ('email',)
-    list_display = ('firstname','lastname', 'email', 'usertype', 'is_active', 'is_staff')
+    list_display = ('firstname','lastname', 'email', 'last_login', 'is_active', 'is_staff')
+    filter_horizontal = ('groups', 'user_permissions',)
     fieldsets = (
-        (None, {'fields': ('firstname','lastname', 'email')}),
-        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+        (None, {'fields': ('firstname','lastname', 'email', 'last_login')}),
+        ('Permissions', {'fields': ('is_active', 'is_staff','is_superuser', 'groups', 'user_permissions',)}),
     )
     add_fieldsets = (
         (None, {
@@ -65,5 +66,3 @@ admin.site.register(Student, StudentAdminConfig)
 class IsuedBookAdmin(admin.ModelAdmin):
     pass
 admin.site.register(IssuedBook, IsuedBookAdmin)
-
-admin.site.register(UserType)
