@@ -9,7 +9,7 @@ User = get_user_model()
 class UserForm(forms.ModelForm):
     class Meta:
         model = models.User
-        fields = ['firstname', 'lastname', 'email', 'password']
+        fields = ['username', 'firstname', 'lastname', 'email', 'password']
 
 
 class BookForm(forms.ModelForm):
@@ -26,7 +26,7 @@ class BookForm(forms.ModelForm):
 class StudentUserForm(forms.ModelForm):
     class Meta:
         model = models.User
-        fields = ['firstname', 'lastname', 'email', 'password']
+        fields = ['username', 'firstname', 'lastname', 'email', 'password']
 
 
 class StudentForm(forms.ModelForm):
