@@ -1,11 +1,12 @@
+import email
 from django.http import HttpResponse
 from django.shortcuts import render, HttpResponseRedirect, redirect, get_object_or_404
 from . import models, forms
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from datetime import date
-from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm, AuthenticationForm
+from django.contrib.auth import update_session_auth_hash, authenticate
 from django.contrib import messages
 
 
@@ -26,11 +27,12 @@ def studentauth(user):
 def dashboard(request):
     if adminauth(request.user):
         return render(request, 'library/admindash.html')
-    if studentauth(request.user):
-        return render(request, 'library/studentdash.html')
     else:
-        return HttpResponse("<br><h1 style='text-align: center'>You are not Verified!</h1><p style='text-align: center; font-size:25px'>Try after 24 hours.</p>")
+        return render(request, 'library/studentdash.html')
 
+# def login(request):
+#     form = AuthenticationForm()
+#     return render(request, 'account/login.html', {'form':form})
 
 def changepassword(request):
     # form = PasswordChangeForm()
@@ -86,9 +88,6 @@ class Admin:
                 my_admin_group[0].user_set.add(user)
             return HttpResponseRedirect('adminlogin')
         return render(request, 'library/adminsignup.html', {'form': form})
-
-    def adminlogin(request):
-        return render(request, 'library/adminlogin.html')
 
     @login_required(login_url='adminlogin')
     @user_passes_test(adminauth)
@@ -173,7 +172,7 @@ class Admin:
             books = list(models.Book.objects.filter(isbn=ib.isbn))
             students = list(models.Student.objects.filter(id=ib.id))
             i = 0
-            for l in books:
+            for i in books:
                 t = (students[i].fullname, students[i].rolldiv,
                      books[i].name, books[i].author, issdate, expdate, fine)
                 print(t)
@@ -186,9 +185,6 @@ class Student:
 
     def studentpage(request):
         return render(request, 'library/studentpage.html')
-
-    def studentlogin(request):
-        return render(request, 'library/studentlogin.html')
 
     @login_required(login_url='studentlogin')
     @user_passes_test(studentauth)
