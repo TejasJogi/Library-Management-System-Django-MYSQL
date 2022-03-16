@@ -27,7 +27,7 @@ class UserAdminConfig(UserAdmin):
     search_fields = ('email',)
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
     ordering = ('email',)
-    list_display = ('firstname','lastname', 'email', 'last_login', 'is_active', 'is_staff')
+    list_display = ('username', 'firstname','lastname', 'email', 'last_login', 'is_active', 'is_staff')
     filter_horizontal = ('groups', 'user_permissions',)
     fieldsets = (
         (None, {'fields': ('firstname','lastname', 'email', 'last_login')}),
@@ -54,7 +54,7 @@ class StudentAdminConfig(admin.ModelAdmin):
     list_display = ('fullname', 'roll_no', 'div','branch')
     fieldsets = (
         (None, {'fields': ('roll_no', 'div', 'branch')}),
-        # ('Permissions', {'fields': ('is_staff', 'is_active')}),
+        ('Permissions', {'fields': ('is_staff', 'is_active')}),
     )
     add_fieldsets = (
         (None, {
