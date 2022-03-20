@@ -20,13 +20,6 @@
         <th>Branch</th>
       </tr>
     </thead>
-    <tfoot>
-      <tr>
-        <td colspan="4">
-          <div class="links"></div>
-        </td>
-      </tr>
-    </tfoot>
     <tbody>
       {% for s in students %}
       <tr>
@@ -36,7 +29,6 @@
         <td>{{s.branch}}</td>
 
       </tr>
-
       {% endfor %}
     </tbody>
   </table>
