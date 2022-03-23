@@ -1,0 +1,36 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+{% include 'library/navbar.html' %}
+
+<br>
+<h1 class="text-center">{% trans "Sign In" %}</h1><br>
+
+<div class="signup-form">
+  <form method="post" class="form-horizontal">{% csrf_token %}
+    {{form.non_field_errors}}
+    {% for field in form %}
+    <div class="form-group text-center">
+      <label class="control-label col-xs-4">{{ field.label_tag }}</label>
+      <div class="col-xs-8">
+        {{ field }} {{field.errors}}
+      </div>
+    </div>
+    {% endfor %}
+    <br>
+    <div class="form-group text-center">
+      <div class="col-xs-8 col-xs-offset-4">
+        <button type="submit" class="btn btn-lg"
+          style="background-color: #353b40; color: white; padding: 10px 40px 10px 40px; border-radius: 21px;">Login</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+{% endblock %}
