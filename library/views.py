@@ -34,6 +34,7 @@ def dashboard(request):
 #     form = AuthenticationForm()
 #     return render(request, 'account/login.html', {'form':form})
 
+
 def changepassword(request):
     # form = PasswordChangeForm()
     if request.user.is_authenticated:
@@ -149,7 +150,7 @@ class Admin:
                 obj.isbn = request.POST.get('isbn2')
                 obj.save()
                 return render(request, 'library/bookissued.html')
-        return render(request, 'library/bookissue.html', {'form': form})
+        return render(request, 'library/bookissue.html', {'form': form}) #(students[i].fullname, students[i].rolldiv, books[i].name, books[i].author, issdate, expdate, fine)
 
     @login_required(login_url='adminlogin')
     @user_passes_test(adminauth)
@@ -172,9 +173,8 @@ class Admin:
             books = list(models.Book.objects.filter(isbn=ib.isbn))
             students = list(models.Student.objects.filter(id=ib.id))
             i = 0
-            for i in books:
-                t = (students[i].fullname, students[i].rolldiv,
-                     books[i].name, books[i].author, issdate, expdate, fine)
+            for l in books:
+                t=(students[i].fullname, students[i].rolldiv, books[i].name, books[i].author, issdate, expdate, fine)
                 print(t)
                 i = i+1
                 li.append(t)
