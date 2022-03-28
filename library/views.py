@@ -27,7 +27,7 @@ def studentauth(user):
 def dashboard(request):
     if adminauth(request.user):
         return render(request, 'library/admindash.html')
-    else:
+    if studentauth(request.user):
         return render(request, 'library/studentdash.html')
 
 # def login(request):
