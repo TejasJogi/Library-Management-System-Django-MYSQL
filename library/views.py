@@ -29,6 +29,8 @@ def dashboard(request):
         return render(request, 'library/admindash.html')
     if studentauth(request.user):
         return render(request, 'library/studentdash.html')
+    else:
+        return redirect('/accounts/login/')
 
 # def login(request):
 #     form = AuthenticationForm()
