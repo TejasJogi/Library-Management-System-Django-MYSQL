@@ -23,6 +23,30 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="static/css/navbar.css"> <!-- CSS for navbar -->
     <link rel="stylesheet" href="static/css/footer.css"> <!-- CSS for footer -->
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
+        
+        /* Track */
+        ::-webkit-scrollbar-track {
+          background: #f1f1f1; 
+          box-shadow: inset 0 0 5px; 
+          border-radius: 10px;
+        }
+         
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: #888; 
+          border-radius: 10px;
+        }
+        
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: #555; 
+        }
+        </style>
     {% block link %}{% endblock link %}
 </head>
 
