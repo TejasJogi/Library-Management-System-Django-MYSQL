@@ -8,10 +8,9 @@
 
 {% include 'library/navbar.html' %}
 
-<br>
-<h1 class="text-center">{% trans "Sign In" %}</h1><br>
+<h1  class="text-center p-4 mb-2 bg-dark bg-success text-white">{% trans "Sign In" %}</h1><br>
 
-<div class="signup-form">
+<div class="signup-form  p-4">
   <form method="post" class="form-horizontal">{% csrf_token %}
     {{form.non_field_errors}}
     {% for field in form %}
