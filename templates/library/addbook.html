@@ -6,14 +6,12 @@
 
     {% include "library/adminnavbar.html" %}
 
-    <div class="signup-form">
-        <form method="post" class="form-horizontal">
-            <br>
+    <center>
+        <h2 class="text-center p-3 mb-2 bg-dark bg-success text-white">ADD BOOK IN LIBRARY</h2>
+    </center>
 
-            <center>
-                <h2 class="mt-3">ADD BOOK IN LIBRARY</h2>
-            </center>
-            <br>
+    <div class="signup-form my-4">
+        <form method="post" class="form-horizontal">
             {% csrf_token %}
 
             {% for field in form %}
