@@ -65,8 +65,8 @@ class CustomAccountManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
   
     username = models.CharField(max_length=50)
-    firstname = models.CharField(max_length=50)    
-    lastname = models.CharField(max_length=50)    
+    first_name = models.CharField(max_length=50, null=True, blank=True)
+    last_name = models.CharField(max_length=50, null=True, blank=True)    
     email = models.EmailField(_('email address'), unique=True)
     start_date = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(null=True, blank=True)
@@ -81,7 +81,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = CustomAccountManager()
 
     def __str__(self):
-        self.fullname = str(self.firstname)+'_'+str(self.lastname)
+        self.fullname = str(self.first_name)+'_'+str(self.last_name)
         return str(self.fullname)
 
     def get_email(self):
@@ -114,11 +114,11 @@ class Student(models.Model):
     branch = models.CharField(max_length=40)
     
     def __str__(self):
-        return str(self.user.firstname)+'['+str(self.roll_no)+'/'+str(self.div)+']'
+        return str(self.user.first_name)+'['+str(self.roll_no)+'/'+str(self.div)+']'
     
     @property
     def fullname(self):
-        return str(self.user.firstname)+' '+ str(self.user.lastname)
+        return str(self.user.first_name)+' '+ str(self.user.last_name)
 
     @property
     def rolldiv(self):

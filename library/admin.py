@@ -27,16 +27,16 @@ class UserAdminConfig(UserAdmin):
     search_fields = ('email',)
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
     ordering = ('email',)
-    list_display = ('username', 'firstname','lastname', 'email', 'last_login', 'is_active', 'is_staff')
+    list_display = ('username', 'first_name','last_name', 'email', 'last_login', 'is_active', 'is_staff')
     filter_horizontal = ('groups', 'user_permissions',)
     fieldsets = (
-        (None, {'fields': ('firstname','lastname', 'email', 'last_login')}),
+        (None, {'fields': ('first_name','last_name', 'email', 'last_login')}),
         ('Permissions', {'fields': ('is_active', 'is_staff','is_superuser', 'groups', 'user_permissions',)}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide'),
-            'fields': ('firstname','lastname', 'email', 'password1', 'password2', 'is_active', 'is_staff')}),
+            'fields': ('first_name','last_name', 'email', 'password1', 'password2', 'is_active', 'is_staff')}),
     )
 admin.site.register(User, UserAdminConfig) 
 
@@ -54,7 +54,7 @@ class StudentAdminConfig(admin.ModelAdmin):
     list_display = ('fullname', 'roll_no', 'div','branch')
     fieldsets = (
         (None, {'fields': ('roll_no', 'div', 'branch')}),
-        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+        
     )
     add_fieldsets = (
         (None, {
