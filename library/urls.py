@@ -1,6 +1,6 @@
 from django.urls import path
 from library import views
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('',views.index, name='index'),
@@ -22,4 +22,6 @@ urlpatterns = [
     path('studentissuedbook', views.Student.studentissuedbook, name='studentissuedbook'),
     path('change_password', views.changepassword, name='changepassword'),
     path('reset_password', views.resetpassword, name='resetpassword'),
+    path('api/users', views.UserList.as_view()),
+    path('api/users/<int:pk>', views.UserDetail.as_view()),
 ]

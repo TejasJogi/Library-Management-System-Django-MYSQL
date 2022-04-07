@@ -44,4 +44,5 @@ urlpatterns = [
     path('studentissuedbook', include('library.urls')),
     path('changepassword', include('library.urls')),
     path('accounts/', include('allauth.urls')),
+    path('api_auth/', include('rest_framework.urls')),
 ]
