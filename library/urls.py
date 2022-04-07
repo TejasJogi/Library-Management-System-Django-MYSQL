@@ -24,4 +24,6 @@ urlpatterns = [
     path('reset_password', views.resetpassword, name='resetpassword'),
     path('api/users', views.UserList.as_view()),
     path('api/users/<int:pk>', views.UserDetail.as_view()),
+    path('api/books', views.BookList.as_view()),
+    path('api/books/<int:pk>', views.BookDetail.as_view()),
 ]
