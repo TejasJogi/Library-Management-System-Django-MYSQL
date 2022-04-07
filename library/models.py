@@ -25,7 +25,7 @@ class Book(models.Model):
         ('romance', 'Romance'),
         ('scifi', 'Sci-Fi'),
     ]
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=100)
     isbn = models.PositiveIntegerField()
     author = models.CharField(max_length=40)
     genere = models.CharField(max_length=30, choices=catchoice, default='education')
