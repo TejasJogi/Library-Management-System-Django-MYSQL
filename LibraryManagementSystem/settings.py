@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
+    # RESTFull API
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
