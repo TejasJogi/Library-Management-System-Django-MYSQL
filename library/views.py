@@ -1,13 +1,16 @@
 import email
-from django.http import HttpResponse
 from django.shortcuts import render, HttpResponseRedirect, redirect, get_object_or_404
-from . import models, forms
+from . import models, forms, serializers
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from datetime import date
-from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm, AuthenticationForm
-from django.contrib.auth import update_session_auth_hash, authenticate
+from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
+from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import status
+from django.http import Http404
 
 
 # Create your views here.
@@ -72,7 +75,6 @@ def resetpassword(request):
     else:
         form = SetPasswordForm(user=request.user)
     return render(request, 'account/password_reset.html', {'form': form})
-
 
 class Admin:
 
@@ -244,3 +246,43 @@ class Student:
             li2.append(t)
 
         return render(request, 'library/studentissuedbook.html', {'li1': li1, 'li2': li2})
+
+
+class UserList(APIView):
+    
+    def get(self, request, format=None):
+        user = models.User.objects.all()
+        serializer = serializers.UserSerializer(user, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = serializers.UserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class UserDetail(APIView):
+    def get_object(self, pk):
+        try:
+            return models.User.objects.get(pk=pk)
+        except models.User.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        user = self.get_object(pk)
+        serializer = serializers.UserSerializer(user)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        serializer = serializers.UserSerializer(snippet, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        snippet.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
