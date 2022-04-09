@@ -1,6 +1,6 @@
 # Library-Management-System-Django-MYSQL
 
-This is a Library Management System. This website is based on Python package Django, using MYSQL for database. This is library management website there librarian can add, remove book from library and student can only see which books is now available in library and which book issue to that student.
+This is a Library Management System. This website is based on Python package Django, using MYSQL for database. This is library management website there librarian can add/remove book or update book information in system and student can see which books is now available in library and which book issue to that student.
 
 ## Dependencies
 
