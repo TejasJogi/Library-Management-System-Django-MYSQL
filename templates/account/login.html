@@ -4,6 +4,8 @@
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
+{% block link %} <link rel="stylesheet" href="/static/css/login.css"> {% endblock link %}
+
 {% block content %}
 
 {% include 'library/navbar.html' %}
@@ -24,14 +26,17 @@
     <br>
     <div class="form-group text-center">
       <div class="col-xs-8 col-xs-offset-4">
-        <button type="submit" class="btn"
-          style="background-color: #353b40; color: white; padding: 10px 40px 10px 40px; border-radius: 21px;">Login</button>
+        <button type="submit" class="btn">Login</button>
       </div>
     </div>
+    <div class="text-center"><a href="/accounts/password/reset/">Forget Password?</a></div>
+  </div>
   </form>
-  <div class="text-center"><a href="/accounts/password/reset/">Forget Password?</a></div>
-</div>
+  
 
 </div>
+
+{% block script %}
+<script src="/static/js/login.js"></script> {% endblock script %}
 
 {% endblock %}
