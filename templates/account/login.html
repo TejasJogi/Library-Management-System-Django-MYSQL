@@ -4,13 +4,11 @@
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
-{% block link %} <link rel="stylesheet" href="/static/css/login.css"> {% endblock link %}
-
 {% block content %}
 
 {% include 'library/navbar.html' %}
 
-<h1 class="text-center p-3 mb-2 bg-dark bg-success text-white">{% trans "Sign In" %}</h1><br>
+<h1>{% trans "Sign In" %}</h1><br>
 
 <div class="signup-form  p-4">
   <form method="post" class="form-horizontal">{% csrf_token %}
@@ -30,9 +28,9 @@
       </div>
     </div>
     <div class="text-center"><a href="/accounts/password/reset/">Forget Password?</a></div>
-  </div>
-  </form>
-  
+</div>
+</form>
+
 
 </div>
 

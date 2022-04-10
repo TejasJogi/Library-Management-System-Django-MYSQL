@@ -8,7 +8,7 @@
 
     {% include "library/adminnavbar.html" %}
 
-    <h3 class="p-3 mb-2 bg-dark bg-success text-white" style='font-size: 30px;text-align:center;'>Available Book in Library</h3>
+    <h1>Available Book in Library</h1>
 
     <br>
     {% if books%}
@@ -44,7 +44,7 @@
         </table>
     </div>
     {%else%}
-    <h1 style='text-align:center;'>No Books Present In Library</h1>
+    <h2>No Books Present In Library</h1>
     {%endif%}
 
 {% endblock body%}

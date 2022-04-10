@@ -6,7 +6,7 @@
 
 {% include 'library/adminnavbar.html' %}
 
-<h3 class="p-3 mb-2 bg-dark bg-success text-white" style='font-size: 30px;text-align:center;'>Registered Students</h3>
+<h1>Registered Students</h1>
 
 <br>
 {% if students%}
@@ -34,7 +34,7 @@
   </table>
 </div>
 {%else%}
-<h1> No Student Registered in Library</h1>
+<h2> No Student Registered in Library</h2>
 {%endif%}
 
 {% endblock body %}

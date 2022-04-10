@@ -1,6 +1,7 @@
 {% extends 'library/base.html' %}
 
-{% block link %}<link rel="stylesheet" href="static/css/index.css">{% endblock link %}
+{% block link %}
+<link rel="stylesheet" href="static/css/index.css">{% endblock link %}
 
 {% block title %}Home{% endblock title %}
 
@@ -14,8 +15,10 @@
             <img class="d-block w-100 " height="500px" src="https://source.unsplash.com/random/1920x1080/?library,books"
                 alt="">
             <div class="carousel-caption">
-                <h1 class="display-4">Library Management System</h1>
-                <p>"The only thing that you absolutely have to know, is the location of the library." - Albert Einstein</p>
+                <h2 class="display-4" style="font-size: 65px;""
+            >Library Management System</h1>
+                <p>" The only thing that you absolutely have to know, is the location of the library." - Albert
+                    Einstein</p>
             </div>
         </div>
     </div>
@@ -24,12 +27,12 @@
     <div class="draw">
         <div class="col-lg-2">
             <img class="img1" src="static/admin.png" height="50%" alt=""><br><br>
-            <a class="btn" style="background-color: #353b40; color: white; padding: 10px 40px 10px 40px; border-radius: 21px;" href="adminsignup" role="button">Admin
+            <a class="btn" href="adminsignup" role="button">Admin
                 SignUp</a>
         </div>
         <div class="col-lg-2">
             <img class="img2" src="static/student.png" height="50%" alt=""><br><br>
-            <a class="btn" style="background-color: #353b40; color: white; padding: 10px 40px 10px 40px; border-radius: 21px;" href="studentsignup" role="button">Student
+            <a class="btn" href="studentsignup" role="button">Student
                 SignUp</a>
         </div>
     </div>

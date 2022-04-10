@@ -5,7 +5,7 @@
 {% block body %}
 
 {% include 'library/adminnavbar.html' %}
-<h3 class="p-3 mb-2 bg-dark text-white" style = 'font-size: 30px;text-align:center;margin-bottom:0px;'>Issued books</h3>
+<h1>Issued books</h1>
 <br>
 {% if li%}
     <div class="container">
@@ -37,7 +37,7 @@
         </table>
     </div>
     {%else%}
-    <center><h1> No book Issued</h1></center>
+    <h2> No book Issued</h2>
     {%endif%}
 
 {% endblock body %}
