@@ -1,0 +1,62 @@
+@media screen and (max-width: 600px) {
+    .form-group, .control-label, .form-group input[type=submit] {
+      width: 100%;
+    }
+  }
+
+/* body {
+    overflow: hidden;
+} */
+
+main {
+    position: relative;
+    background-repeat: no-repeat;
+    background: url(/static/bg.jpg);
+    width: 100vw;
+    height: 94.25vh;
+    color: black;
+    background-size: cover;
+}
+
+.container{
+    border: 2px solid black;
+    padding: 1em;
+    background-color: rgba(128, 128, 128, 0.7);
+    width: 33%;
+    font-weight: 700;
+}
+
+.container h2 {
+    text-align: center;
+    font-size: 36px;
+}
+
+.form-group {
+    text-align: center;
+}
+
+.form-group input {
+    text-align: center;
+    display: block;
+    width: 20rem;
+    padding: 1px;
+    border: 2px solid black;
+    margin: 11px auto;
+    font-size: 25px;
+    border-radius: 8px;
+}
+
+.button {
+    background-color: black;
+    opacity: inherit;
+    width: 28rem;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgb(66, 64, 64);
+    color: white;
+}
