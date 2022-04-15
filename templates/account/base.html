@@ -35,22 +35,26 @@
 
 <body>
   {% block body %}
+  <header>
+    
+  </header>
 
-  
+  <main>
+    {% block content %}
+    {% if messages %}
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% endblock %}
+    {% endblock %}
+  </main>
 
-  {% block content %}
-  {% if messages %}
-  <div>
-    <strong>Messages:</strong>
-    <ul>
-      {% for message in messages %}
-      <li>{{message}}</li>
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %}
-  {% endblock %}
-  {% endblock %}
   {% block extra_body %}
 
   <footer class="page-footer font-small dark">

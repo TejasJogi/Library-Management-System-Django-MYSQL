@@ -2,39 +2,50 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block head_title %}{% trans "Login" %}{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="/static/css/login.css"> {% endblock link %}
 
 {% block content %}
 
-{% include 'library/navbar.html' %}
+{% include "library/navbar.html" %}
 
-<h1>{% trans "Sign In" %}</h1><br>
+<h1>{% trans "Login" %}</h1><br>
 
-<div class="signup-form  p-4">
-  <form name="SignForm" method="post" class="form-horizontal">{% csrf_token %}
-    {{form.non_field_errors}}
-    {% for field in form %}
-    <div class="form-group text-center">
-      <label class="control-label col-xs-4">{{ field.label_tag }}</label>
-      <div class="col-xs-8">
-        {{ field }} {{field.errors}}
-      </div>
-    </div>
-    {% endfor %}
-    <br>
-    <div class="form-group text-center">
-      <div class="col-xs-8 col-xs-offset-4">
-        <button type="submit" class="btn">Login</button>
-      </div>
+<div class="flex" style="margin-top: 5%;">
+  <div class="container">
+    <h2>Login</h2>
+    <div class="signup-form  p-4">
+      <form name="SignForm" method="post" class="form-horizontal">
+
+        {% csrf_token %}
+        {{form.non_field_errors}}
+        {% for field in form %}
+        <div class="form-group text-center">
+          <label class="control-label col-xs-4">{{ field.label_tag }}</label>
+          <div class="col-xs-8 row">
+            {{ field }} {{field.errors}}
+          </div>
+        </div>
+        {% endfor %}
+        <br>
+        <div class="form-group text-center">
+          <div class="col-xs-8">
+            <button type="submit" class="btn">Login</button>
+          </div>
+        </div>
+
     </div>
     <div class="text-center"><a href="/accounts/password/reset/">Forget Password?</a></div>
+  </div>
+  </form>
 </div>
-</form>
-
-
 </div>
+
 
 {% block script %}
-<script src="/static/js/login.js"></script> {% endblock script %}
+<script src="/static/js/login.js"></script>
+{% endblock script %}
 
 {% endblock %}
