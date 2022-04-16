@@ -175,9 +175,10 @@ class Admin:
                 day = d-15
                 fine = day*10
             books = list(models.Book.objects.filter(isbn=ib.isbn))
+            print(books)
             students = list(models.Student.objects.filter(id=ib.id))
             i = 0
-            for l in books:
+            for i in books:
                 t=(students[i].fullname, students[i].rolldiv, books[i].name, books[i].author, issdate, expdate, fine)
                 print(t)
                 i = i+1
