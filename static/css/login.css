@@ -1,34 +1,41 @@
 @media screen and (max-width: 600px) {
-    .form-group, .control-label, .form-group input[type=submit] {
-      width: 100%;
+
+    .form-group,
+    .control-label,
+    .form-group input[type=submit] {
+        width: 100%;
     }
-  }
-
-/* body {
-    overflow: hidden;
-} */
-
-main {
-    position: relative;
-    background-repeat: no-repeat;
-    background: url(/static/bg.jpg);
-    width: 100vw;
-    height: 94.25vh;
-    color: black;
-    background-size: cover;
 }
 
-.container{
-    border: 2px solid black;
-    padding: 1em;
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    background: url(/static/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 88.6vh;
+    width: 100%;
+    color: black;
+}
+
+.container {
+    border: .1rem solid black;
+    padding: 1rem;
     background-color: rgba(128, 128, 128, 0.7);
-    width: 33%;
+    width: 35em;
+    height: 35em;
     font-weight: 700;
+    margin-top: 6rem;
 }
 
 .container h2 {
     text-align: center;
-    font-size: 36px;
+    font-size: 2rem;
 }
 
 .form-group {
@@ -39,24 +46,43 @@ main {
     text-align: center;
     display: block;
     width: 20rem;
-    padding: 1px;
+    padding: .09rem;
     border: 2px solid black;
     margin: 11px auto;
-    font-size: 25px;
+    font-size: 1.5rem;
     border-radius: 8px;
+    box-sizing: border-box;
+    border-radius: 10rem;
 }
 
 .button {
-    background-color: black;
-    opacity: inherit;
-    width: 28rem;
+    text-align: center;
+    display: block;
+    width: 20rem;
+    padding: .09rem;
+    border: 2px solid black;
+    background-color: #343a40;
     color: white;
-    border-radius: 10px;
-    font-size: 20px;
-    cursor: pointer;
+    margin: 11px auto;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    box-sizing: border-box;
+    border-radius: 10rem;
 }
 
-.btn:hover {
+.button:hover {
+    text-align: center;
+    display: block;
     background-color: rgb(66, 64, 64);
     color: white;
+    box-sizing: border-box;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+    display: block;
+}
+
+footer {
+    margin-top: auto;
 }
