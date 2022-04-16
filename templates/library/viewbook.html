@@ -4,9 +4,9 @@
 
 {% block link %}<script src="https://kit.fontawesome.com/55d3d9b8fc.js" crossorigin="anonymous"></script>{% endblock link %}
 
-{% block body %}
+{% block header %} {% include "library/adminnavbar.html" %} {% endblock header %}
 
-    {% include "library/adminnavbar.html" %}
+{% block content %}
 
     <h1>Available Book in Library</h1>
 
@@ -47,4 +47,4 @@
     <h2>No Books Present In Library</h1>
     {%endif%}
 
-{% endblock body%}
+{% endblock content %}

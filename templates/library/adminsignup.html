@@ -2,13 +2,12 @@
 
 {% block title %}Admin Signup{% endblock title %}
 
-{% block body %}
+{% block header %} {% include 'library/navbar.html' %} {% endblock header %} 
 
-{% include 'library/navbar.html' %}
+{% block content %}
 
-<center>
-    <h1>Admin Signup</h2>
-</center>
+<h1>Admin Signup</h1>
+
 
 <div class="signup-form p-4">
     <form method="post" class="form-horizontal">
@@ -32,6 +31,6 @@
     <div class="text-center">Already have an account? <a href="/accounts/login">Sign In here</a></div>
 </div>
 
-{% endblock body %}
+{% endblock content %}
 
     

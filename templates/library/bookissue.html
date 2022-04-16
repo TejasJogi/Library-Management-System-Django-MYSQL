@@ -2,15 +2,14 @@
 
 {% block title %}Student{% endblock title %}
 
-{% block link %}<link rel="stylesheet" href="static/css/userpage.css">{% endblock link %}
+{% block link %}
+<link rel="stylesheet" href="static/css/userpage.css">{% endblock link %}
 
-{% block body %}
+{% block header %} {% include 'library/adminnavbar.html' %} {% endblock header %}
 
-{% include 'library/adminnavbar.html' %}
+{% block content %}
 
-<center>
-    <h1>Issue Book To Stusent</h1>
-</center>
+<h1>Issue Book To Stusent</h1>
 
 <div class="signup-form my-5">
     <form method="post" class="form-horizontal">
@@ -34,4 +33,4 @@
     </form>
 </div>
 
-{% endblock body %}
+{% endblock content %}

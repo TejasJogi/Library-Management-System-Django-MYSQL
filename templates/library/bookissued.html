@@ -4,9 +4,9 @@
 
 {% block link %}<link rel="stylesheet" href="static/css/userpage.css">{% endblock link %}
 
-{% block body %}
+{% block header %} {% include 'library/adminnavbar.html' %} {% endblock header %} 
 
-{% include 'library/adminnavbar.html' %}
+{% block content %}
 
 <h1>Book Issued!</h1>
 <br><br>
@@ -16,4 +16,4 @@
 <a href="issuedbook" class="btn active" role="button" aria-pressed="true">View Issued Book</a><br><br>
 </div>
 
-{% endblock body %}
+{% endblock content %}

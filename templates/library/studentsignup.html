@@ -2,11 +2,11 @@
 
 {% block title %}Student Signup{% endblock title %}
 
-{% block body %}
+{% block header %} {% include 'library/navbar.html' %} {% endblock header %}
 
-{% include 'library/navbar.html' %}
+{% block content %}
 
-  <h1>Student Signup</h1>
+<h1>Student Signup</h1>
 
 <br>
 
@@ -41,4 +41,4 @@
 </div>
 <br>
 
-{% endblock body %}
+{% endblock content %}

@@ -2,14 +2,11 @@
 
 {% block title %}Books{% endblock title %}
 
-{% block body %}
+{% block header %} {% include 'library/studentnavbar.html' %} {% endblock header %}
 
-{% include 'library/studentnavbar.html' %}
+{% block content %}
 
-<h3 class="p-3 mb-2 bg-dark text-white" style='font-size: 30px;text-align:center;'>Available Book in
-    Library</h3>
-
-<br>
+<h1>Available Book in Library</h1>
 
 {% if books%}
 <div class="container">
@@ -41,4 +38,4 @@
 {%endif%}
 
 
-{% endblock body %}
+{% endblock content %}

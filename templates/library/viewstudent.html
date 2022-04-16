@@ -2,9 +2,9 @@
 
 {% block title %}View Student{% endblock title %}
 
-{% block body %}
+{% block header %} {% include "library/adminnavbar.html" %} {% endblock header %}
 
-{% include 'library/adminnavbar.html' %}
+{% block content %}
 
 <h1>Registered Students</h1>
 
@@ -37,4 +37,4 @@
 <h2> No Student Registered in Library</h2>
 {%endif%}
 
-{% endblock body %}
+{% endblock content %}

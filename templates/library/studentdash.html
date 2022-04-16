@@ -5,11 +5,10 @@
 {% block link %}
 <link rel="stylesheet" href="static/css/index.css">{% endblock link %}
 
-{% block body %}
+{% block header %} {% include 'library/studentnavbar.html' %} {% endblock header %}
 
-{% include 'library/studentnavbar.html' %}
+{% block content %}
 
-<br>
 <div class="jumbotron" style="text-align:center">
     <h2 class="display-4 pt-4">Hello {{user.first_name}} {{user.last_name}} !</h2>
     <p class="lead">As you are Student, you can see how many book are present in library and view issued books to you.
@@ -24,4 +23,4 @@
     <div class="text-center"><a href="accounts/password/change">Change password?</a></div>
 </div>
 
-{% endblock body %}
+{% endblock content %}

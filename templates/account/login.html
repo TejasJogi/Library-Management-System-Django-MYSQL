@@ -7,45 +7,31 @@
 {% block link %}
 <link rel="stylesheet" href="/static/css/login.css"> {% endblock link %}
 
+{% block nav %} {% include "library/navbar.html" %} {% endblock nav %}
+
+
 {% block content %}
-
-{% include "library/navbar.html" %}
-
-<h1>{% trans "Login" %}</h1><br>
-
-<div class="flex" style="margin-top: 5%;">
-  <div class="container">
-    <h2>Login</h2>
-    <div class="signup-form  p-4">
-      <form name="SignForm" method="post" class="form-horizontal">
-
-        {% csrf_token %}
-        {{form.non_field_errors}}
-        {% for field in form %}
-        <div class="form-group text-center">
-          <label class="control-label col-xs-4">{{ field.label_tag }}</label>
-          <div class="col-xs-8 row">
-            {{ field }} {{field.errors}}
-          </div>
-        </div>
-        {% endfor %}
-        <br>
-        <div class="form-group text-center">
-          <div class="col-xs-8">
-            <button type="submit" class="btn">Login</button>
-          </div>
-        </div>
-
+<!-- <h1>{% trans "Login" %}</h1><br> -->
+<br>
+<div class="container">
+  <h2>Login</h2>
+  <form name="SignForm" method="post" class="form-horizontal p-4" onsubmit=" return validate()">
+    {% csrf_token %}
+    {{form.non_field_errors}}
+    {% for field in form %}
+    <div class="form-group text-center">
+      <div class="col-xs-8">
+        <!-- <label>{{ field.label_tag }}</label> -->
+        {{ field.label_tag }} {{ field }} <span class="errorlist"></span> 
+      </div>
+    </div>
+    {% endfor %}
+    <div class="form-group text-center">
+      <div class="col-xs-8 row">
+        <input type="submit" class="button" value="Login">
+      </div>
     </div>
     <div class="text-center"><a href="/accounts/password/reset/">Forget Password?</a></div>
-  </div>
-  </form>
 </div>
-</div>
-
-
-{% block script %}
-<script src="/static/js/login.js"></script>
-{% endblock script %}
-
-{% endblock %}
+</form>
+{% endblock content %}

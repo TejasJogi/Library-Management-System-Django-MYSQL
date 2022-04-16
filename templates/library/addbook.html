@@ -2,35 +2,35 @@
 
 {% block title %}Add Book{% endblock title %}
 
-{% block body %}
+{% block nav %} {% include "library/adminnavbar.html" %} {% endblock nav %}
 
-    {% include "library/adminnavbar.html" %}
+{% block content %}
 
-    <center>
-        <h3>Add Book in library</h3>
-    </center>
+<center>
+    <h3>Add Book in library</h3>
+</center>
 
-    <div class="signup-form my-5">
-        <form method="post" class="form-horizontal">
-            {% csrf_token %}
+<div class="signup-form my-5">
+    <form method="post" class="form-horizontal">
+        {% csrf_token %}
 
-            {% for field in form %}
-            <div class="form-group text-center">
-                <label class="control-label col-xs-4">{{ field.label_tag }}</label>
-                <div class="col-xs-8">
-                    {{ field }}
-                </div>
+        {% for field in form %}
+        <div class="form-group text-center">
+            <label class="control-label col-xs-4">{{ field.label_tag }}</label>
+            <div class="col-xs-8">
+                {{ field }}
             </div>
-            {% endfor %}
+        </div>
+        {% endfor %}
 
-            <br>
-            <div class="form-group text-center">
-                <div class="col-xs-8 col-xs-offset-4">
-                    <button type="submit" class="btn">ADD</button>
-                </div>
+        <br>
+        <div class="form-group text-center">
+            <div class="col-xs-8 col-xs-offset-4">
+                <button type="submit" class="btn">ADD</button>
             </div>
-        </form>
-        <div class="text-center">View Available Book In Library<a href="viewbook">Click here</a></div>
-    </div>
-    
-{% endblock body %}
+        </div>
+    </form>
+    <div class="text-center">View Available Book In Library<a href="viewbook">Click here</a></div>
+</div>
+
+{% endblock content %}

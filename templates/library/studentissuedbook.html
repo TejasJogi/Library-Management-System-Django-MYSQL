@@ -2,11 +2,12 @@
 
 {% block title %}Issued Books to you{% endblock title %}
 
-{% block link %}<link rel="stylesheet" href="static/css/noscroll.css">{% endblock link %}
+{% block link %}
+<link rel="stylesheet" href="static/css/noscroll.css">{% endblock link %}
 
-{% block body %}
+{% block header %} {% include 'library/studentnavbar.html' %} {% endblock header %}
 
-{% include 'library/studentnavbar.html' %}
+{% block content %}
 
 <h1>Book Issued To You</h1>
 
@@ -72,10 +73,6 @@
                     <td> {{t.1}}</td>
                     <td> {{t.2}}</td>
                 </tr>
-
-
-
-
                 {% endfor %}
             </tbody>
         </table>
@@ -84,4 +81,4 @@
         {%endif%}
     </div>
 
-    {% endblock body %}
+    {% endblock content %}

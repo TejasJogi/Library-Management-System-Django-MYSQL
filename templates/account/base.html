@@ -36,7 +36,7 @@
 <body>
   {% block body %}
   <header>
-    
+    {% block nav %} {% endblock nav %}
   </header>
 
   <main>
@@ -57,15 +57,17 @@
 
   {% block extra_body %}
 
+  {% block script %}{% endblock script %}
+
+  {% endblock %}
+
+  
+
   <footer class="page-footer font-small dark">
     <div class="footer-copyright text-center py-3">© 2021 TJ:
       <a href="https://tjlibrary.com/"> TJLibrary.com</a>
     </div>
   </footer>
-
-  {% block script %}{% endblock script %}
-
-  {% endblock %}
 </body>
 
 </html>

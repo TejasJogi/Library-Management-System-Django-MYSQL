@@ -13,10 +13,9 @@
     }
 </style>
 
-{% block body %}
+{% block header %} {% include "library/adminnavbar.html" %} {% endblock header %}
 
-{% include "library/adminnavbar.html" %}
-<br>
+{% block content %}
 <div class="jumbotron">
     <h2 class="display-4">Hello {{user.first_name}} {{user.last_name}} !</h1>
     <p class="lead">Admin can use below features..
@@ -32,5 +31,4 @@
     <br>
     <div class="text-center"><a href="accounts/password/change">Change password?</a></div>
 </div>
-
-{% endblock body %}
+{% endblock content %}

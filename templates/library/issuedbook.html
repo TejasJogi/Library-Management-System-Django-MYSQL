@@ -2,11 +2,12 @@
 
 {% block title %}Issued Books{% endblock title %}
 
-{% block body %}
+{% block header %} {% include 'library/adminnavbar.html' %} {% endblock header %}
 
-{% include 'library/adminnavbar.html' %}
+{% block content %}
+
 <h1>Issued books</h1>
-<br>
+
 {% if li%}
     <div class="container">
       <table class="table table-hover table-condensed table-striped table-bordered">
@@ -40,4 +41,4 @@
     <h2> No book Issued</h2>
     {%endif%}
 
-{% endblock body %}
+{% endblock content %}

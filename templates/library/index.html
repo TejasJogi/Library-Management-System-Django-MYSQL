@@ -5,10 +5,9 @@
 
 {% block title %}Home{% endblock title %}
 
-{% block body %}
+{% block header %} {% include 'library/navbar.html' %} {% endblock header %}  
 
-{% include 'library/navbar.html' %}
-
+{% block content %}
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -37,4 +36,4 @@
         </div>
     </div>
 </div>
-{% endblock body %}
+{% endblock content %}
