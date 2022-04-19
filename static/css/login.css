@@ -24,13 +24,21 @@ main {
 }
 
 .container {
+    display: absolute;
     border: .1rem solid black;
-    padding: 1rem;
-    background-color: rgba(128, 128, 128, 0.7);
+    padding: .9rem;
+    background-color: rgba(112, 105, 105, 0.7);
     width: 35em;
     height: 35em;
     font-weight: 700;
-    margin-top: 6rem;
+    margin-top: 9rem;
+    margin-right: 25%;
+    border-radius: 1rem;
+}
+
+.nonfield {
+    display: hidden;
+    
 }
 
 .container h2 {
