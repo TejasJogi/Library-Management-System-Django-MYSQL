@@ -76,6 +76,7 @@ def resetpassword(request):
         form = SetPasswordForm(user=request.user)
     return render(request, 'account/password_reset.html', {'form': form})
 
+
 class Admin:
 
     def adminpage(request):
@@ -154,7 +155,8 @@ class Admin:
                 obj.isbn = request.POST.get('isbn2')
                 obj.save()
                 return render(request, 'library/bookissued.html')
-        return render(request, 'library/bookissue.html', {'form': form}) #(students[i].fullname, students[i].rolldiv, books[i].name, books[i].author, issdate, expdate, fine)
+        # (students[i].fullname, students[i].rolldiv, books[i].name, books[i].author, issdate, expdate, fine)
+        return render(request, 'library/bookissue.html', {'form': form})
 
     @login_required(login_url='adminlogin')
     @user_passes_test(adminauth)
@@ -174,14 +176,16 @@ class Admin:
             if d > 15:
                 day = d-15
                 fine = day*10
+
             books = list(models.Book.objects.filter(isbn=ib.isbn))
             print(books)
             students = list(models.Student.objects.filter(id=ib.id))
+            print(students)
             i = 0
-            for i in books:
-                t=(students[i].fullname, students[i].rolldiv, books[i].name, books[i].author, issdate, expdate, fine)
+            for l in books:
+                t = (students[i].fullname, students[i].rolldiv, books[i].name, books[i].author, issdate, expdate, fine)
                 print(t)
-                i = i+1
+                i = i + 1
                 li.append(t)
         return render(request, 'library/issuedbook.html', {'li': li})
 
@@ -250,7 +254,7 @@ class Student:
 
 
 class UserList(APIView):
-    
+
     def get(self, request, format=None):
         user = models.User.objects.all()
         serializer = serializers.UserSerializer(user, many=True)
@@ -262,6 +266,7 @@ class UserList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class UserDetail(APIView):
     def get_object(self, pk):
@@ -290,7 +295,7 @@ class UserDetail(APIView):
 
 
 class BookList(APIView):
-    
+
     def get(self, request, format=None):
         book = models.Book.objects.all()
         serializer = serializers.BookSerializer(book, many=True)
@@ -302,6 +307,7 @@ class BookList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class BookDetail(APIView):
     def get_object(self, pk):
