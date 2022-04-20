@@ -16,10 +16,9 @@
 {% block header %} {% include "library/adminnavbar.html" %} {% endblock header %}
 
 {% block content %}
-<div class="jumbotron">
-    <h2 class="display-4">Hello {{user.first_name}} {{user.last_name}} !</h1>
-    <p class="lead">Admin can use below features..
-    </p>
+<div class="jumbotron pt-4">
+    <h2 class="display-4">Hello {{user.first_name}} {{user.last_name}}.</h1>
+    <p class="lead">Admin can use below features..</p>
     <hr class="mb-5">
     <div class="options" style="text-align:center">
         <a href="addbook" class="btn" role="button" aria-pressed="true">Add Books</a><br><br>

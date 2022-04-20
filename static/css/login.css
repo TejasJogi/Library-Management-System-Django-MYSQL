@@ -36,9 +36,9 @@ main {
     border-radius: 1rem;
 }
 
-.nonfield {
-    display: hidden;
-    
+.errorlist {
+    list-style: none;
+    color: red;
 }
 
 .container h2 {
