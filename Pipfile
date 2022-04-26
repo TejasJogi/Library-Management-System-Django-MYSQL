@@ -7,6 +7,9 @@ name = "pypi"
 django = "*"
 python-decouple = "*"
 mysqlclient = "*"
+coverage = "*"
+django-allauth = "*"
+djangorestframework = "*"
 
 [dev-packages]
 
