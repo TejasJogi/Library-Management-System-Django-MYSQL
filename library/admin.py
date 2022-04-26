@@ -7,6 +7,7 @@ from .models import User
 
 # Register your models here.
 
+@admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     model = Book
     search_fields = ('name','isbn', 'author', 'genere')
@@ -19,9 +20,8 @@ class BookAdmin(admin.ModelAdmin):
     add_fieldsets = (
         (None, {'fields': ('name','isbn', 'author', 'genere')}),
     )
-admin.site.register(Book, BookAdmin)
 
-
+@admin.register(User)
 class UserAdminConfig(UserAdmin):
     model = User
     search_fields = ('email',)
@@ -38,13 +38,14 @@ class UserAdminConfig(UserAdmin):
             'classes': ('wide'),
             'fields': ('first_name','last_name', 'email', 'password1', 'password2', 'is_active', 'is_staff')}),
     )
-admin.site.register(User, UserAdminConfig) 
 
 
 # class AdminConfig(admin.ModelAdmin):
 #     pass                                      
 # admin.site.register(Admin, AdminConfig)
 
+
+@admin.register(Student)
 class StudentAdminConfig(admin.ModelAdmin):
     model = Student
 
@@ -61,8 +62,7 @@ class StudentAdminConfig(admin.ModelAdmin):
             'classes': ('wide'),
             'fields': ( 'roll_no', 'div', 'branch')}),
     )
-admin.site.register(Student, StudentAdminConfig)
 
+@admin.register(IssuedBook)
 class IsuedBookAdmin(admin.ModelAdmin):
     pass
-admin.site.register(IssuedBook, IsuedBookAdmin)
