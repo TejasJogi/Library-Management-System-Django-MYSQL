@@ -1,5 +1,5 @@
 from django.test import TestCase
-from library.models import Book, User, Student
+from library.models import Book, IssuedBook, User, Student, get_expiry
 from django.utils.timezone import now
 from django.contrib.auth import get_user_model
 from datetime import datetime
@@ -25,3 +25,10 @@ class TestModels(TestCase):
         self.assertEqual(student.__str__(), str(student.user.first_name)+'['+str(student.roll_no)+'/'+str(student.div)+']')
         self.assertEqual(str(student.fullname), str(student.user.first_name)+' '+ str(student.user.last_name))
         self.assertEqual(str(student.rolldiv), str(student.roll_no)+'/'+str(student.div))
+
+    def test_get_expiry(self): 
+        self.assertNotEquals(get_expiry, datetime.now() + timedelta(days=15))
+
+    def test_issued_book(self):
+        issuedBook = IssuedBook.objects.create(branch="testbranch", isbn=1, issuedate=now, expirydate=get_expiry())
+        self.assertEqual(issuedBook.__str__(),str(issuedBook.branch))
