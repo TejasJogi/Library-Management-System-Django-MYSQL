@@ -1,9 +1,8 @@
 from django.test import TestCase
 from library.models import Book, IssuedBook, User, Student, get_expiry
 from django.utils.timezone import now
-from django.contrib.auth import get_user_model
-from datetime import datetime
-from datetime import timedelta
+from datetime import datetime, timedelta
+
 
 #Test Models here
 
@@ -12,7 +11,6 @@ class TestModels(TestCase):
     def test_create_book(self):
         book = Book.objects.create(name="Testbook", isbn=1234, author="Testauthor", genere="Testgenere")
         book.save()
-        # self.assertTrue(isinstance(book, Book))
         self.assertEqual(book.__str__(), str(book.name)+"["+str(book.isbn)+']')
 
     def test_create_user(self):
@@ -27,7 +25,7 @@ class TestModels(TestCase):
         self.assertEqual(str(student.rolldiv), str(student.roll_no)+'/'+str(student.div))
 
     def test_get_expiry(self): 
-        self.assertNotEquals(get_expiry, datetime.now() + timedelta(days=15))
+        self.assertEqual(get_expiry(), datetime.today() + timedelta(days=15))
 
     def test_issued_book(self):
         issuedBook = IssuedBook.objects.create(branch="testbranch", isbn=1, issuedate=now, expirydate=get_expiry())
