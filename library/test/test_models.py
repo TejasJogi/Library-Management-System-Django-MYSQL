@@ -1,3 +1,4 @@
+from django.forms import PasswordInput
 from django.test import TestCase
 from library.models import Book, IssuedBook, User, Student, get_expiry
 from django.utils.timezone import now
@@ -34,3 +35,8 @@ class TestIssuedBook(TestCase):
     def test_issued_book(self):
         issuedBook = IssuedBook.objects.create(branch="testbranch", isbn=1, issuedate=now, expirydate=get_expiry())
         self.assertEqual(issuedBook.__str__(),str(issuedBook.branch))
+
+class TestCustomAccountManager(TestCase):
+    def test_create_user(self):
+        user = User.objects.create_user(email='test@email.com', password='password@123')
+        self.assertRaises(ValueError, User.objects.create_user, email='', password='password@123')
