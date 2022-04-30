@@ -1,4 +1,3 @@
-from django.forms import PasswordInput
 from django.test import TestCase
 from library.models import Book, IssuedBook, User, Student, get_expiry
 from django.utils.timezone import now
