@@ -2,6 +2,7 @@ from django.test import TestCase
 from library.models import Book, IssuedBook, User, Student, get_expiry
 from django.utils.timezone import now
 from datetime import datetime, timedelta
+from django.contrib.auth import get_user_model
 
 
 #Test Models here
@@ -39,3 +40,13 @@ class TestCustomAccountManager(TestCase):
     def test_create_user(self):
         user = User.objects.create_user(email='test@email.com', password='password@123')
         self.assertRaises(ValueError, User.objects.create_user, email='', password='password@123')
+
+    def test_create_superuser(self):
+        User = get_user_model()
+        superuser = User.objects.create_superuser(email='test@email.com', password='password@123')
+
+        with self.assertRaisesMessage(ValueError, 'Superuser must be assigned to is_staff=True.'):
+            User.objects.create_superuser(email='test@email.com', password='password@123', is_staff=False)
+        
+        with self.assertRaisesMessage(ValueError, 'Superuser must be assigned to is_superuser=True.'):
+           User.objects.create_superuser(email='test@email.com', password='password@123', is_superuser=False)
