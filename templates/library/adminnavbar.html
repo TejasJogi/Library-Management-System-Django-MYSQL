@@ -9,27 +9,27 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Book</a>
                 <div class="dropdown-menu">
-                    <a href="addbook" style="color: black;" class="dropdown-item">Add Book</a>
-                    <a href="viewbook" style="color: black;" class="dropdown-item">View Book</a>
+                    <a href="{% url 'addbook' %}" style="color: black;" class="dropdown-item">Add Book</a>
+                    <a href="{% url 'viewbook' %}" style="color: black;" class="dropdown-item">View Book</a>
                 </div>
             </div>
 
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Issue Book</a>
                 <div class="dropdown-menu">
-                    <a href="bookissue" style="color: black;" class="dropdown-item">Issue New Book</a>
-                    <a href="issuedbook" style="color: black;" class="dropdown-item">View Issued Book</a>
+                    <a href="{% url 'bookissue' %}" style="color: black;" class="dropdown-item">Issue New Book</a>
+                    <a href="{% url 'issuedbook' %}" style="color: black;" class="dropdown-item">View Issued Book</a>
                 </div>
             </div>
 
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Student</a>
                 <div class="dropdown-menu">
-                    <a href="viewstudent" style="color: black;" class="dropdown-item">View Student</a>
+                    <a href="{% url 'viewstudent' %}" style="color: black;" class="dropdown-item">View Student</a>
                 </div>
             </div>
 
-            <a href="logout" class="nav-item nav-link">Logout</a> &nbsp
+            <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a> &nbsp
         </li>
     </div>
 </nav>

@@ -3,7 +3,7 @@
 {% block title %}Student Dashboard{% endblock title %}
 
 {% block link %}
-<link rel="stylesheet" href="static/css/index.css">{% endblock link %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">{% endblock link %}
 
 {% block header %} {% include 'library/studentnavbar.html' %} {% endblock header %}
 
@@ -16,8 +16,8 @@
     <hr class="my-4">
     <p>Option Available For You</p><br>
     <div class="options" style="text-align:center">
-        <a href="studentview" class="btn" role="button" aria-pressed="true">View books</a><br><br>
-        <a href="studentissuedbook" class="btn" role="button" aria-pressed="true">View issued book to you</a>
+        <a href="{% url 'studentview' %}" class="btn" role="button" aria-pressed="true">View books</a><br><br>
+        <a href="{% url 'studentissuedbook' %}" class="btn" role="button" aria-pressed="true">View issued book to you</a>
     </div>
     <br>
     <div class="text-center"><a href="accounts/password/change">Change password?</a></div>

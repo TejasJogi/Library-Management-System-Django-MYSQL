@@ -1,9 +1,11 @@
 {% extends 'library/base.html' %}
 
+{% load static %}
+
 {% block title %}Student{% endblock title %}
 
 {% block link %}
-<link rel="stylesheet" href="static/css/userpage.css">{% endblock link %}
+<link rel="stylesheet" href="{% static '/css/userpage.css' %}">{% endblock link %}
 
 {% block header %} {% include 'library/adminnavbar.html' %} {% endblock header %}
 

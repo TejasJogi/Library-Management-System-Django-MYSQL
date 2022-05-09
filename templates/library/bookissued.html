@@ -11,9 +11,9 @@
 <h1>Book Issued!</h1>
 <br><br>
 <div class="options" style="text-align:center">
-<a href="bookissue" class="btn active" role="button" aria-pressed="true">Issue more Book</a><br><br>
+<a href="{% url 'bookissue' %}" class="btn active" role="button" aria-pressed="true">Issue more Book</a><br><br>
 
-<a href="issuedbook" class="btn active" role="button" aria-pressed="true">View Issued Book</a><br><br>
+<a href="{% url 'issuedbook' %}" class="btn active" role="button" aria-pressed="true">View Issued Book</a><br><br>
 </div>
 
 {% endblock content %}

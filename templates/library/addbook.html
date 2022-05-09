@@ -1,5 +1,7 @@
 {% extends 'library/base.html' %}
 
+{% load static %}
+
 {% block title %}Add Book{% endblock title %}
 
 {% block nav %} {% include "library/adminnavbar.html" %} {% endblock nav %}
@@ -30,7 +32,7 @@
             </div>
         </div>
     </form>
-    <div class="text-center">View Available Book In Library<a href="viewbook">Click here</a></div>
+    <div class="text-center">View Available Book In Library<a href="{% url 'viewbook' %}">Click here</a></div>
 </div>
 
 {% endblock content %}

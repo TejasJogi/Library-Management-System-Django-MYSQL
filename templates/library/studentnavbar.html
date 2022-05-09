@@ -8,12 +8,12 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Book</a>
                 <div class="dropdown-menu">
-                    <a href="studentview" style="color: black;" class="dropdown-item">View Book</a>
-                    <a href="studentissuedbook" style="color: black;" class="dropdown-item">View Isued Book</a>
+                    <a href="{% url 'studentview' %}" style="color: black;" class="dropdown-item">View Book</a>
+                    <a href="{% url 'studentissuedbook' %}" style="color: black;" class="dropdown-item">View Isued Book</a>
                 </div>
             </div>
 
-            <a href="logout" class="nav-item nav-link">Logout</a> &nbsp
+            <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a> &nbsp
         </li>
     </div>
 </nav>
