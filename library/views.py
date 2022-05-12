@@ -95,7 +95,7 @@ class Admin:
             return HttpResponseRedirect('/accounts/login/')
         return render(request, 'library/adminsignup.html', {'form': form})
 
-    @login_required(login_url='adminlogin')
+    @login_required(login_url='/accounts/login/')
     @user_passes_test(adminauth)
     def addbook(request):
         form = forms.BookForm()
@@ -106,13 +106,13 @@ class Admin:
                 return render(request, 'library/bookadded.html')
         return render(request, 'library/addbook.html', {'form': form})
 
-    @login_required(login_url='adminlogin')
+    @login_required(login_url='/accounts/login/')
     @user_passes_test(adminauth)
     def viewbook(request):
         books = models.Book.objects.all()
         return render(request, 'library/viewbook.html', {'books': books})
 
-    @login_required(login_url='adminlogin')
+    @login_required(login_url='/accounts/login/')
     @user_passes_test(adminauth)
     def bookedit(request, pk):
         if not request.user.is_active:
@@ -128,7 +128,7 @@ class Admin:
                 return redirect('index')
         return render(request, 'library/addbook.html', locals())
 
-    @login_required(login_url='adminlogin')
+    @login_required(login_url='/accounts/login/')
     @user_passes_test(adminauth)
     def bookdelete(request, pk):
         if not request.user.is_active:
@@ -137,13 +137,13 @@ class Admin:
         obj.delete()
         return redirect('viewbook')
 
-    @login_required(login_url='adminlogin')
+    @login_required(login_url='')
     @user_passes_test(adminauth)
     def viewstudent(request):
         students = models.Student.objects.all()
         return render(request, 'library/viewstudent.html', {'students': students})
 
-    @login_required(login_url='adminlogin')
+    @login_required(login_url='/accounts/login/')
     @user_passes_test(adminauth)
     def bookissue(request):
         form = forms.BookissueForm()
@@ -158,7 +158,7 @@ class Admin:
         # (students[i].fullname, students[i].rolldiv, books[i].name, books[i].author, issdate, expdate, fine)
         return render(request, 'library/bookissue.html', {'form': form})
 
-    @login_required(login_url='adminlogin')
+    @login_required(login_url='/accounts/login/')
     @user_passes_test(adminauth)
     def issuedbook(request):
         issuedbooks = models.IssuedBook.objects.all()
@@ -195,7 +195,7 @@ class Student:
     def studentpage(request):
         return render(request, 'library/studentpage.html')
 
-    @login_required(login_url='studentlogin')
+    @login_required(login_url='/accounts/login/')
     @user_passes_test(studentauth)
     def studentview(request):
         books = models.Book.objects.all()
@@ -220,7 +220,7 @@ class Student:
             return HttpResponseRedirect('/accounts/login/')
         return render(request, 'library/studentsignup.html', context=mydict)
 
-    @login_required(login_url='studentlogin')
+    @login_required(login_url='/accounts/login/')
     def studentissuedbook(request):
         student = models.Student.objects.filter(user_id=request.user.id)
         issuedbook = models.IssuedBook.objects.filter(id=student[0].id)
