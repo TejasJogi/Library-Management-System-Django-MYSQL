@@ -1,2 +1,3 @@
 .env
-.coverage__pycache__
+.coverage
+__pycache__
