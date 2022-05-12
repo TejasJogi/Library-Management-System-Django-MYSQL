@@ -92,7 +92,7 @@ class Admin:
                 user.save()
                 my_admin_group = Group.objects.get_or_create(name='ADMIN')
                 my_admin_group[0].user_set.add(user)
-            return HttpResponseRedirect('adminlogin')
+            return HttpResponseRedirect('/accounts/login/')
         return render(request, 'library/adminsignup.html', {'form': form})
 
     @login_required(login_url='adminlogin')
@@ -217,7 +217,7 @@ class Student:
                 user2 = f2.save()
                 my_student_group = Group.objects.get_or_create(name='STUDENT')
                 my_student_group[0].user_set.add(user)
-            return HttpResponseRedirect('studentlogin')
+            return HttpResponseRedirect('/accounts/login/')
         return render(request, 'library/studentsignup.html', context=mydict)
 
     @login_required(login_url='studentlogin')
