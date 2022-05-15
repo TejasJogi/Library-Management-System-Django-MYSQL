@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
     # RESTFull API
     'rest_framework',
+    'rest_framework_simplejwt'
 ]
 
 MIDDLEWARE = [
@@ -205,3 +206,16 @@ ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400
   
 #or any other page
 ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/'
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+  
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+      
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
+   
+}
