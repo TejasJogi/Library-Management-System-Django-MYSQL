@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
     # My App
     'library.apps.LibraryConfig',
-    
+
     # Form widget tweaks
     'widget_tweaks',
 
@@ -68,7 +68,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
- # Added for Google auth
+# Added for Google auth
 
 SITE_ID = 2
 
@@ -95,7 +95,7 @@ TEMPLATES = [
         },
     },
 ]
-LOGIN_REDIRECT_URL =  '/dashboard'
+LOGIN_REDIRECT_URL = '/dashboard'
 
 WSGI_APPLICATION = 'LibraryManagementSystem.wsgi.application'
 
@@ -158,7 +158,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#added manually
+# added manually
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
@@ -172,7 +172,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
@@ -197,20 +197,20 @@ SESSION_SAVE_EVERY_REQUEST = False
 
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
 
-#django-allauth registraion settings
-ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =1
+# django-allauth registraion settings
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
-  
+
 # 1 day
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 
-  
-#or any other page
-ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/'
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400
+
+# or any other page
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 REST_FRAMEWORK = {
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
-      
+
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 
